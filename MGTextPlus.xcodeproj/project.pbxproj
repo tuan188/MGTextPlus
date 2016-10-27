@@ -10,7 +10,35 @@
 		BC81FFA21DC0AE2400A07CD6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC81FFA11DC0AE2400A07CD6 /* AppDelegate.swift */; };
 		BC81FFA41DC0AE2400A07CD6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC81FFA31DC0AE2400A07CD6 /* Assets.xcassets */; };
 		BC81FFA71DC0AE2400A07CD6 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC81FFA51DC0AE2400A07CD6 /* MainMenu.xib */; };
+		BC81FFB51DC0AEFE00A07CD6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC81FFB41DC0AEFE00A07CD6 /* Cocoa.framework */; };
+		BC81FFBA1DC0AEFE00A07CD6 /* SourceEditorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC81FFB91DC0AEFE00A07CD6 /* SourceEditorExtension.swift */; };
+		BC81FFBC1DC0AEFE00A07CD6 /* SourceEditorCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC81FFBB1DC0AEFE00A07CD6 /* SourceEditorCommand.swift */; };
+		BC81FFC01DC0AEFE00A07CD6 /* TextPlus.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BC81FFB21DC0AEFE00A07CD6 /* TextPlus.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BC81FFBE1DC0AEFE00A07CD6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC81FF961DC0AE2300A07CD6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BC81FFB11DC0AEFE00A07CD6;
+			remoteInfo = TextPlus;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BC81FFC41DC0AEFE00A07CD6 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				BC81FFC01DC0AEFE00A07CD6 /* TextPlus.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		BC81FF9E1DC0AE2400A07CD6 /* MGTextPlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MGTextPlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -18,6 +46,12 @@
 		BC81FFA31DC0AE2400A07CD6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BC81FFA61DC0AE2400A07CD6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		BC81FFA81DC0AE2400A07CD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC81FFB21DC0AEFE00A07CD6 /* TextPlus.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TextPlus.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC81FFB41DC0AEFE00A07CD6 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		BC81FFB81DC0AEFE00A07CD6 /* TextPlus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TextPlus.entitlements; sourceTree = "<group>"; };
+		BC81FFB91DC0AEFE00A07CD6 /* SourceEditorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorExtension.swift; sourceTree = "<group>"; };
+		BC81FFBB1DC0AEFE00A07CD6 /* SourceEditorCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorCommand.swift; sourceTree = "<group>"; };
+		BC81FFBD1DC0AEFE00A07CD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,6 +62,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BC81FFAF1DC0AEFE00A07CD6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC81FFB51DC0AEFE00A07CD6 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -35,6 +77,8 @@
 			isa = PBXGroup;
 			children = (
 				BC81FFA01DC0AE2400A07CD6 /* MGTextPlus */,
+				BC81FFB61DC0AEFE00A07CD6 /* TextPlus */,
+				BC81FFB31DC0AEFE00A07CD6 /* Frameworks */,
 				BC81FF9F1DC0AE2400A07CD6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				BC81FF9E1DC0AE2400A07CD6 /* MGTextPlus.app */,
+				BC81FFB21DC0AEFE00A07CD6 /* TextPlus.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -58,6 +103,33 @@
 			path = MGTextPlus;
 			sourceTree = "<group>";
 		};
+		BC81FFB31DC0AEFE00A07CD6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BC81FFB41DC0AEFE00A07CD6 /* Cocoa.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BC81FFB61DC0AEFE00A07CD6 /* TextPlus */ = {
+			isa = PBXGroup;
+			children = (
+				BC81FFB91DC0AEFE00A07CD6 /* SourceEditorExtension.swift */,
+				BC81FFBB1DC0AEFE00A07CD6 /* SourceEditorCommand.swift */,
+				BC81FFBD1DC0AEFE00A07CD6 /* Info.plist */,
+				BC81FFB71DC0AEFE00A07CD6 /* Supporting Files */,
+			);
+			path = TextPlus;
+			sourceTree = "<group>";
+		};
+		BC81FFB71DC0AEFE00A07CD6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BC81FFB81DC0AEFE00A07CD6 /* TextPlus.entitlements */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -68,15 +140,34 @@
 				BC81FF9A1DC0AE2300A07CD6 /* Sources */,
 				BC81FF9B1DC0AE2300A07CD6 /* Frameworks */,
 				BC81FF9C1DC0AE2300A07CD6 /* Resources */,
+				BC81FFC41DC0AEFE00A07CD6 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				BC81FFBF1DC0AEFE00A07CD6 /* PBXTargetDependency */,
 			);
 			name = MGTextPlus;
 			productName = MGTextPlus;
 			productReference = BC81FF9E1DC0AE2400A07CD6 /* MGTextPlus.app */;
 			productType = "com.apple.product-type.application";
+		};
+		BC81FFB11DC0AEFE00A07CD6 /* TextPlus */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BC81FFC11DC0AEFE00A07CD6 /* Build configuration list for PBXNativeTarget "TextPlus" */;
+			buildPhases = (
+				BC81FFAE1DC0AEFE00A07CD6 /* Sources */,
+				BC81FFAF1DC0AEFE00A07CD6 /* Frameworks */,
+				BC81FFB01DC0AEFE00A07CD6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TextPlus;
+			productName = TextPlus;
+			productReference = BC81FFB21DC0AEFE00A07CD6 /* TextPlus.appex */;
+			productType = "com.apple.product-type.xcode-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -89,6 +180,11 @@
 				ORGANIZATIONNAME = "Tuan Truong";
 				TargetAttributes = {
 					BC81FF9D1DC0AE2300A07CD6 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = NN74NJ78BB;
+						ProvisioningStyle = Automatic;
+					};
+					BC81FFB11DC0AEFE00A07CD6 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = NN74NJ78BB;
 						ProvisioningStyle = Automatic;
@@ -109,6 +205,7 @@
 			projectRoot = "";
 			targets = (
 				BC81FF9D1DC0AE2300A07CD6 /* MGTextPlus */,
+				BC81FFB11DC0AEFE00A07CD6 /* TextPlus */,
 			);
 		};
 /* End PBXProject section */
@@ -123,6 +220,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BC81FFB01DC0AEFE00A07CD6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -134,7 +238,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BC81FFAE1DC0AEFE00A07CD6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC81FFBA1DC0AEFE00A07CD6 /* SourceEditorExtension.swift in Sources */,
+				BC81FFBC1DC0AEFE00A07CD6 /* SourceEditorCommand.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BC81FFBF1DC0AEFE00A07CD6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BC81FFB11DC0AEFE00A07CD6 /* TextPlus */;
+			targetProxy = BC81FFBE1DC0AEFE00A07CD6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		BC81FFA51DC0AE2400A07CD6 /* MainMenu.xib */ = {
@@ -241,7 +362,9 @@
 		BC81FFAC1DC0AE2400A07CD6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = NN74NJ78BB;
 				INFOPLIST_FILE = MGTextPlus/Info.plist;
@@ -255,13 +378,49 @@
 		BC81FFAD1DC0AE2400A07CD6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = NN74NJ78BB;
 				INFOPLIST_FILE = MGTextPlus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = truong.tuan.MGTextPlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		BC81FFC21DC0AEFE00A07CD6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = TextPlus/TextPlus.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = NN74NJ78BB;
+				INFOPLIST_FILE = TextPlus/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = truong.tuan.MGTextPlus.TextPlus;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		BC81FFC31DC0AEFE00A07CD6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = TextPlus/TextPlus.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = NN74NJ78BB;
+				INFOPLIST_FILE = TextPlus/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = truong.tuan.MGTextPlus.TextPlus;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -283,6 +442,15 @@
 			buildConfigurations = (
 				BC81FFAC1DC0AE2400A07CD6 /* Debug */,
 				BC81FFAD1DC0AE2400A07CD6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BC81FFC11DC0AEFE00A07CD6 /* Build configuration list for PBXNativeTarget "TextPlus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC81FFC21DC0AEFE00A07CD6 /* Debug */,
+				BC81FFC31DC0AEFE00A07CD6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
