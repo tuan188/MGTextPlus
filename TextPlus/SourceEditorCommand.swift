@@ -26,40 +26,49 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         
         let deleteLinesIdentifier = bundleIdentifier + ".DeleteLines"
         let duplicateLinesIdentifier = bundleIdentifier + ".DuplicateLines"
-        let copyLineIdentifier = bundleIdentifier + ".CopyLine"
-        let cutLineIdentifier = bundleIdentifier + ".CutLine"
+        let copyLinesIdentifier = bundleIdentifier + ".CopyLines"
+        let cutLinesIdentifier = bundleIdentifier + ".CutLines"
         
         let targetRange = Range(uncheckedBounds: (lower: textRange.start.line, upper: min(textRange.end.line + 1, invocation.buffer.lines.count)))
         let indexSet = IndexSet(integersIn: targetRange)
         let selectedLines = invocation.buffer.lines.objects(at: indexSet)
         
-        // Switch all different commands id based which defined in Info.plist
-        switch invocation.commandIdentifier {
-        case deleteLinesIdentifier:
+        func deleteLines() {
             invocation.buffer.lines.removeObjects(at: indexSet)
             let lineSelection = XCSourceTextRange()
             lineSelection.start = XCSourceTextPosition(line: targetRange.lowerBound, column: 0)
             lineSelection.end = XCSourceTextPosition(line: targetRange.lowerBound, column: 0)
             invocation.buffer.selections.setArray([lineSelection])
+        }
+        
+        func copyLines() {
+            var copyLines = [String]()
+            for lineIndex in indexSet {
+                if let line = invocation.buffer.lines[lineIndex] as? String {
+                    copyLines.append(line)
+                }
+            }
+            let newString = copyLines.joined()
+            let pasteboard = NSPasteboard.general()
+            pasteboard.declareTypes([NSPasteboardTypeString], owner: nil)
+            pasteboard.setString(newString, forType: NSPasteboardTypeString)
+        }
+        
+        // Switch all different commands id based which defined in Info.plist
+        switch invocation.commandIdentifier {
+        case deleteLinesIdentifier:
+            deleteLines()
         case duplicateLinesIdentifier:
             let lineSelection = XCSourceTextRange()
             lineSelection.start = XCSourceTextPosition(line: textRange.start.line + targetRange.count, column: textRange.start.column)
             lineSelection.end = XCSourceTextPosition(line: textRange.end.line + targetRange.count, column: textRange.end.column)
             invocation.buffer.lines.insert(selectedLines, at: indexSet)
             invocation.buffer.selections.setArray([lineSelection])
-        case copyLineIdentifier:
-            if indexSet.count == 1 {
-                if let line = invocation.buffer.lines[indexSet.first!] as? String {
-                    NSPasteboard.general().setString(line, forType: NSPasteboardTypeString)
-                }
-            }
-        case cutLineIdentifier:
-            if indexSet.count == 1 {
-                if let line = invocation.buffer.lines[indexSet.first!] as? String {
-                    NSPasteboard.general().setString(line, forType: NSPasteboardTypeString)
-                    invocation.buffer.lines.removeObjects(at: IndexSet(integersIn: targetRange))
-                }
-            }
+        case copyLinesIdentifier:
+           copyLines()
+        case cutLinesIdentifier:
+            copyLines()
+            deleteLines()
         default:
             break
         }

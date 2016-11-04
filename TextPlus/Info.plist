@@ -32,17 +32,17 @@
 					<key>XCSourceEditorCommandClassName</key>
 					<string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
 					<key>XCSourceEditorCommandIdentifier</key>
-					<string>$(PRODUCT_BUNDLE_IDENTIFIER).CopyLine</string>
+					<string>$(PRODUCT_BUNDLE_IDENTIFIER).CopyLines</string>
 					<key>XCSourceEditorCommandName</key>
-					<string>Copy Line</string>
+					<string>Copy Lines</string>
 				</dict>
 				<dict>
 					<key>XCSourceEditorCommandClassName</key>
 					<string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
 					<key>XCSourceEditorCommandIdentifier</key>
-					<string>$(PRODUCT_BUNDLE_IDENTIFIER).CutLine</string>
+					<string>$(PRODUCT_BUNDLE_IDENTIFIER).CutLines</string>
 					<key>XCSourceEditorCommandName</key>
-					<string>Cut Line</string>
+					<string>Cut Lines</string>
 				</dict>
 				<dict>
 					<key>XCSourceEditorCommandClassName</key>
