@@ -26,8 +26,6 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         
         let deleteLinesIdentifier = bundleIdentifier + ".DeleteLines"
         let duplicateLinesIdentifier = bundleIdentifier + ".DuplicateLines"
-//        let moveLinesUpIdentifier = bundleIdentifier + ".MoveLinesUp"
-//        let moveLinesDownIdentifier = bundleIdentifier + ".MoveLinesDown"
         let copyLineIdentifier = bundleIdentifier + ".CopyLine"
         let cutLineIdentifier = bundleIdentifier + ".CutLine"
         
@@ -38,25 +36,17 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         // Switch all different commands id based which defined in Info.plist
         switch invocation.commandIdentifier {
         case deleteLinesIdentifier:
-            invocation.buffer.lines.removeObjects(at: IndexSet(integersIn: targetRange))
+            invocation.buffer.lines.removeObjects(at: indexSet)
+            let lineSelection = XCSourceTextRange()
+            lineSelection.start = XCSourceTextPosition(line: targetRange.lowerBound, column: 0)
+            lineSelection.end = XCSourceTextPosition(line: targetRange.lowerBound, column: 0)
+            invocation.buffer.selections.setArray([lineSelection])
         case duplicateLinesIdentifier:
+            let lineSelection = XCSourceTextRange()
+            lineSelection.start = XCSourceTextPosition(line: textRange.start.line + targetRange.count, column: textRange.start.column)
+            lineSelection.end = XCSourceTextPosition(line: textRange.end.line + targetRange.count, column: textRange.end.column)
             invocation.buffer.lines.insert(selectedLines, at: indexSet)
-//        case moveLinesUpIdentifier:
-//            guard targetRange.lowerBound - 1 >= 0 else {
-//                break
-//            }
-//            invocation.buffer.lines.removeObjects(at: IndexSet(integersIn: targetRange))
-//            let newTargetRange = Range(uncheckedBounds: (lower: targetRange.lowerBound - 1, upper: targetRange.upperBound - 1))
-//            let newIndexSet = IndexSet(integersIn: newTargetRange)
-//            invocation.buffer.lines.insert(selectedLines, at: newIndexSet)
-//        case moveLinesDownIdentifier:
-//            guard targetRange.lowerBound + targetRange.count < invocation.buffer.lines.count else {
-//                break
-//            }
-//            invocation.buffer.lines.removeObjects(at: IndexSet(integersIn: targetRange))
-//            let newTargetRange = Range(uncheckedBounds: (lower: targetRange.lowerBound + 1, upper: targetRange.upperBound + 1))
-//            let newIndexSet = IndexSet(integersIn: newTargetRange)
-//            invocation.buffer.lines.insert(selectedLines, at: newIndexSet)
+            invocation.buffer.selections.setArray([lineSelection])
         case copyLineIdentifier:
             if indexSet.count == 1 {
                 if let line = invocation.buffer.lines[indexSet.first!] as? String {
