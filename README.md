@@ -12,4 +12,4 @@ Duplicate lines:
 
 Delete lines:
 
-![delete_lines](https://cloud.githubusercontent.com/assets/6461902/19998145/9f32d90e-a29d-11e6-9046-5e48362ec6d9.gif)
+![delete_lines](https://cloud.githubusercontent.com/assets/6461902/19998180/ea5dbaac-a29d-11e6-95a7-52ebec9a0f0f.gif)
