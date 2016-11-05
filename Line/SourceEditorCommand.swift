@@ -1,8 +1,8 @@
 //
 //  SourceEditorCommand.swift
-//  TextPlus
+//  Line
 //
-//  Created by Tuan Truong on 10/26/16.
+//  Created by Tuan Truong on 11/5/16.
 //  Copyright © 2016 Tuan Truong. All rights reserved.
 //
 
@@ -65,7 +65,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             invocation.buffer.lines.insert(selectedLines, at: indexSet)
             invocation.buffer.selections.setArray([lineSelection])
         case copyLinesIdentifier:
-           copyLines()
+            copyLines()
         case cutLinesIdentifier:
             copyLines()
             deleteLines()
