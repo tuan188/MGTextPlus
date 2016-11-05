@@ -71,6 +71,9 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         case joinLinesIdentifier:
             if indexSet.count == 1 {
                 let currentRow = indexSet.last!
+                guard currentRow < invocation.buffer.lines.count - 1 else {
+                    break
+                }
                 let firstLine = invocation.buffer.lines[currentRow] as! String
                 let secondLine = invocation.buffer.lines[currentRow + 1] as! String
                 let newLine = firstLine.trimEnd() + " " + secondLine.trim() + "\n"
@@ -90,7 +93,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 }
                 let newLine = lines.joined(separator: " ") + "\n"
                 invocation.buffer.lines[indexSet.first!] = newLine
-                let indexSetToRemove = IndexSet(integersIn: Range(uncheckedBounds: (lower: textRange.start.line + 1, upper: min(textRange.end.line + 1, invocation.buffer.lines.count - 1))))
+                let indexSetToRemove = IndexSet(integersIn: Range(uncheckedBounds: (lower: textRange.start.line + 1, upper: min(textRange.end.line + 1, invocation.buffer.lines.count))))
                 deleteLines(indexSet: indexSetToRemove)
             }
             break
