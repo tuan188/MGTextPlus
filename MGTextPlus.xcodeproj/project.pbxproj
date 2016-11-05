@@ -18,6 +18,9 @@
 		BCA270761DCD84F100F87634 /* SourceEditorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA270751DCD84F100F87634 /* SourceEditorExtension.swift */; };
 		BCA270781DCD84F100F87634 /* SourceEditorCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA270771DCD84F100F87634 /* SourceEditorCommand.swift */; };
 		BCA2707C1DCD84F100F87634 /* ConvertCase.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BCA270701DCD84F100F87634 /* ConvertCase.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BCA270811DCE169C00F87634 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA270801DCE169C00F87634 /* StringExtension.swift */; };
+		BCA270821DCE169C00F87634 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA270801DCE169C00F87634 /* StringExtension.swift */; };
+		BCA270831DCE169C00F87634 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA270801DCE169C00F87634 /* StringExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +72,7 @@
 		BCA270751DCD84F100F87634 /* SourceEditorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorExtension.swift; sourceTree = "<group>"; };
 		BCA270771DCD84F100F87634 /* SourceEditorCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorCommand.swift; sourceTree = "<group>"; };
 		BCA270791DCD84F100F87634 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BCA270801DCE169C00F87634 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +130,7 @@
 				BC81FFA31DC0AE2400A07CD6 /* Assets.xcassets */,
 				BC81FFA51DC0AE2400A07CD6 /* MainMenu.xib */,
 				BC81FFA81DC0AE2400A07CD6 /* Info.plist */,
+				BCA270801DCE169C00F87634 /* StringExtension.swift */,
 			);
 			path = MGTextPlus;
 			sourceTree = "<group>";
@@ -311,6 +316,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCA270811DCE169C00F87634 /* StringExtension.swift in Sources */,
 				BC81FFA21DC0AE2400A07CD6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -321,6 +327,7 @@
 			files = (
 				BCA270621DCD83D700F87634 /* SourceEditorExtension.swift in Sources */,
 				BCA270641DCD83D700F87634 /* SourceEditorCommand.swift in Sources */,
+				BCA270821DCE169C00F87634 /* StringExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,6 +337,7 @@
 			files = (
 				BCA270761DCD84F100F87634 /* SourceEditorExtension.swift in Sources */,
 				BCA270781DCD84F100F87634 /* SourceEditorCommand.swift in Sources */,
+				BCA270831DCE169C00F87634 /* StringExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -32,33 +32,41 @@
                     <key>XCSourceEditorCommandClassName</key>
                     <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
                     <key>XCSourceEditorCommandIdentifier</key>
-                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).CopyLines</string>
+                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).CopyLine</string>
                     <key>XCSourceEditorCommandName</key>
-                    <string>Copy Line(s)</string>
+                    <string>Copy Line</string>
                 </dict>
                 <dict>
                     <key>XCSourceEditorCommandClassName</key>
                     <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
                     <key>XCSourceEditorCommandIdentifier</key>
-                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).CutLines</string>
+                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).CutLine</string>
                     <key>XCSourceEditorCommandName</key>
-                    <string>Cut Line(s)</string>
+                    <string>Cut Line</string>
                 </dict>
                 <dict>
                     <key>XCSourceEditorCommandClassName</key>
                     <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
                     <key>XCSourceEditorCommandIdentifier</key>
-                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).DeleteLines</string>
+                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).DeleteLine</string>
                     <key>XCSourceEditorCommandName</key>
-                    <string>Delete Line(s)</string>
+                    <string>Delete Line</string>
                 </dict>
                 <dict>
                     <key>XCSourceEditorCommandClassName</key>
                     <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
                     <key>XCSourceEditorCommandIdentifier</key>
-                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).DuplicateLines</string>
+                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).DuplicateLine</string>
                     <key>XCSourceEditorCommandName</key>
-                    <string>Duplicate Line(s)</string>
+                    <string>Duplicate Line</string>
+                </dict>
+                <dict>
+                    <key>XCSourceEditorCommandClassName</key>
+                    <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
+                    <key>XCSourceEditorCommandIdentifier</key>
+                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).JoinLines</string>
+                    <key>XCSourceEditorCommandName</key>
+                    <string>Join Lines</string>
                 </dict>
 			</array>
 			<key>XCSourceEditorExtensionPrincipalClass</key>

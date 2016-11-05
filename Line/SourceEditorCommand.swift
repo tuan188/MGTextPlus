@@ -24,16 +24,17 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             return
         }
         
-        let deleteLinesIdentifier = bundleIdentifier + ".DeleteLines"
-        let duplicateLinesIdentifier = bundleIdentifier + ".DuplicateLines"
-        let copyLinesIdentifier = bundleIdentifier + ".CopyLines"
-        let cutLinesIdentifier = bundleIdentifier + ".CutLines"
+        let deleteLineIdentifier = bundleIdentifier + ".DeleteLine"
+        let duplicateLineIdentifier = bundleIdentifier + ".DuplicateLine"
+        let copyLineIdentifier = bundleIdentifier + ".CopyLine"
+        let cutLineIdentifier = bundleIdentifier + ".CutLine"
+        let joinLinesIdentifier = bundleIdentifier + ".JoinLines"
         
         let targetRange = Range(uncheckedBounds: (lower: textRange.start.line, upper: min(textRange.end.line + 1, invocation.buffer.lines.count)))
         let indexSet = IndexSet(integersIn: targetRange)
         let selectedLines = invocation.buffer.lines.objects(at: indexSet)
         
-        func deleteLines() {
+        func deleteLines(indexSet: IndexSet) {
             invocation.buffer.lines.removeObjects(at: indexSet)
             let lineSelection = XCSourceTextRange()
             lineSelection.start = XCSourceTextPosition(line: targetRange.lowerBound, column: 0)
@@ -43,10 +44,8 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         
         func copyLines() {
             var copyLines = [String]()
-            for lineIndex in indexSet {
-                if let line = invocation.buffer.lines[lineIndex] as? String {
-                    copyLines.append(line)
-                }
+            for line in selectedLines {
+                copyLines.append(line as! String)
             }
             let newString = copyLines.joined()
             let pasteboard = NSPasteboard.general()
@@ -56,19 +55,45 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         
         // Switch all different commands id based which defined in Info.plist
         switch invocation.commandIdentifier {
-        case deleteLinesIdentifier:
-            deleteLines()
-        case duplicateLinesIdentifier:
+        case deleteLineIdentifier:
+            deleteLines(indexSet: indexSet)
+        case duplicateLineIdentifier:
             let lineSelection = XCSourceTextRange()
             lineSelection.start = XCSourceTextPosition(line: textRange.start.line + targetRange.count, column: textRange.start.column)
             lineSelection.end = XCSourceTextPosition(line: textRange.end.line + targetRange.count, column: textRange.end.column)
             invocation.buffer.lines.insert(selectedLines, at: indexSet)
             invocation.buffer.selections.setArray([lineSelection])
-        case copyLinesIdentifier:
+        case copyLineIdentifier:
             copyLines()
-        case cutLinesIdentifier:
+        case cutLineIdentifier:
             copyLines()
-            deleteLines()
+            deleteLines(indexSet: indexSet)
+        case joinLinesIdentifier:
+            if indexSet.count == 1 {
+                let currentRow = indexSet.last!
+                let firstLine = invocation.buffer.lines[currentRow] as! String
+                let secondLine = invocation.buffer.lines[currentRow + 1] as! String
+                let newLine = firstLine.trimEnd() + " " + secondLine.trim() + "\n"
+                invocation.buffer.lines[currentRow] = newLine
+                invocation.buffer.lines.removeObject(at: currentRow + 1)
+            }
+            else {
+                var lines = [String]()
+                for (index, line) in selectedLines.enumerated() {
+                    let line = line as! String
+                    if index == 0 {
+                        lines.append(line.trimEnd())
+                    }
+                    else {
+                        lines.append(line.trim())
+                    }
+                }
+                let newLine = lines.joined(separator: " ") + "\n"
+                invocation.buffer.lines[indexSet.first!] = newLine
+                let indexSetToRemove = IndexSet(integersIn: Range(uncheckedBounds: (lower: textRange.start.line + 1, upper: min(textRange.end.line + 1, invocation.buffer.lines.count - 1))))
+                deleteLines(indexSet: indexSetToRemove)
+            }
+            break
         default:
             break
         }
