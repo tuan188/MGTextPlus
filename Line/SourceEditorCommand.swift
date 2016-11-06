@@ -82,7 +82,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                     invocation.buffer.selections.setArray([lineSelection])
                 }
             }
-            else {
+            else if indexSet.count > 1 {
                 var lines = [String]()
                 for (index, line) in selectedLines.enumerated() {
                     let line = line as! String
@@ -104,10 +104,21 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 let lineSelection = XCSourceTextRange()
                 lineSelection.start = XCSourceTextPosition(line: textRange.start.line, column: textRange.start.column)
                 lineSelection.end = XCSourceTextPosition(line: textRange.start.line, column: newLine.characters.count - 1)
-               
                 invocation.buffer.selections.setArray([lineSelection])
             }
-          
+        case bundleIdentifier + ".RemoveEmptyLines":
+            var emptyLineIndexArray = [Int]()
+            for lineIndex in textRange.start.line...textRange.end.line {
+                guard lineIndex < invocation.buffer.lines.count - 1 else {
+                    break
+                }
+                let line = invocation.buffer.lines[lineIndex] as! String
+                if line.trim().isEmpty {
+                    emptyLineIndexArray.append(lineIndex)
+                }
+            }
+            let indexSetToRemove = IndexSet(emptyLineIndexArray)
+            deleteLines(indexSet: indexSetToRemove)
         default:
             break
         }
