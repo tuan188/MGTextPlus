@@ -12,8 +12,8 @@ Xcode Source Editor Extension
 
 Duplicate lines:
 
-![duplicate_lines](https://cloud.githubusercontent.com/assets/6461902/19998033/edf9e79a-a29c-11e6-92d1-f19580fcb052.gif)
+![duplicate line](https://cloud.githubusercontent.com/assets/6461902/20035422/a3da6f7e-a416-11e6-869f-d4a24bd0fc38.gif)
 
 Delete lines:
 
-![delete_lines](https://cloud.githubusercontent.com/assets/6461902/19998180/ea5dbaac-a29d-11e6-95a7-52ebec9a0f0f.gif)
+![delete line](https://cloud.githubusercontent.com/assets/6461902/20035421/a02b826e-a416-11e6-9459-0343b84fdf5c.gif)
