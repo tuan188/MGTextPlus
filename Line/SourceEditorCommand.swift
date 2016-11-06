@@ -69,6 +69,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             copyLines()
             deleteLines(indexSet: indexSet)
         case joinLinesIdentifier:
+            let newLine: String
             if indexSet.count == 1 {
                 let currentRow = indexSet.last!
                 guard currentRow < invocation.buffer.lines.count - 1 else {
@@ -76,9 +77,20 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 }
                 let firstLine = invocation.buffer.lines[currentRow] as! String
                 let secondLine = invocation.buffer.lines[currentRow + 1] as! String
-                let newLine = firstLine.trimEnd() + " " + secondLine.trim() + "\n"
+                newLine = firstLine.trimEnd() + " " + secondLine.trimStart()
                 invocation.buffer.lines[currentRow] = newLine
                 invocation.buffer.lines.removeObject(at: currentRow + 1)
+                
+                let lineSelection = XCSourceTextRange()
+                lineSelection.start = XCSourceTextPosition(line: textRange.start.line, column: firstLine.characters.count)
+                if textRange.start.column == textRange.end.column {
+                    lineSelection.end = lineSelection.start
+                    invocation.buffer.selections.setArray([lineSelection])
+                }
+                else {
+               
+                }
+                
             }
             else {
                 var lines = [String]()
@@ -87,16 +99,25 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                     if index == 0 {
                         lines.append(line.trimEnd())
                     }
+                    else if index == selectedLines.count - 1 {
+                        lines.append(line.trimStart())
+                    }
                     else {
                         lines.append(line.trim())
                     }
                 }
-                let newLine = lines.joined(separator: " ") + "\n"
+                newLine = lines.joined(separator: " ")
                 invocation.buffer.lines[indexSet.first!] = newLine
                 let indexSetToRemove = IndexSet(integersIn: Range(uncheckedBounds: (lower: textRange.start.line + 1, upper: min(textRange.end.line + 1, invocation.buffer.lines.count))))
                 deleteLines(indexSet: indexSetToRemove)
+                
+                let lineSelection = XCSourceTextRange()
+                lineSelection.start = XCSourceTextPosition(line: textRange.start.line, column: textRange.start.column)
+                lineSelection.end = XCSourceTextPosition(line: textRange.start.line, column: newLine.characters.count - 1)
+               
+                invocation.buffer.selections.setArray([lineSelection])
             }
-            break
+          
         default:
             break
         }

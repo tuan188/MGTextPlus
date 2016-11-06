@@ -18,4 +18,10 @@ extension String {
                                           with: "",
                                           options: CompareOptions.regularExpression)
     }
+    
+    func trimStart() -> String {
+        return self.replacingOccurrences(of: "^[ \t]+",
+                                         with: "",
+                                         options: CompareOptions.regularExpression)
+    }
 }
