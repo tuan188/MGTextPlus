@@ -24,12 +24,6 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             return
         }
         
-        let deleteLineIdentifier = bundleIdentifier + ".DeleteLine"
-        let duplicateLineIdentifier = bundleIdentifier + ".DuplicateLine"
-        let copyLineIdentifier = bundleIdentifier + ".CopyLine"
-        let cutLineIdentifier = bundleIdentifier + ".CutLine"
-        let joinLinesIdentifier = bundleIdentifier + ".JoinLines"
-        
         let targetRange = Range(uncheckedBounds: (lower: textRange.start.line, upper: min(textRange.end.line + 1, invocation.buffer.lines.count)))
         let indexSet = IndexSet(integersIn: targetRange)
         let selectedLines = invocation.buffer.lines.objects(at: indexSet)
@@ -55,20 +49,20 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         
         // Switch all different commands id based which defined in Info.plist
         switch invocation.commandIdentifier {
-        case deleteLineIdentifier:
+        case bundleIdentifier + ".DeleteLine":
             deleteLines(indexSet: indexSet)
-        case duplicateLineIdentifier:
+        case bundleIdentifier + ".DuplicateLine":
             let lineSelection = XCSourceTextRange()
             lineSelection.start = XCSourceTextPosition(line: textRange.start.line + targetRange.count, column: textRange.start.column)
             lineSelection.end = XCSourceTextPosition(line: textRange.end.line + targetRange.count, column: textRange.end.column)
             invocation.buffer.lines.insert(selectedLines, at: indexSet)
             invocation.buffer.selections.setArray([lineSelection])
-        case copyLineIdentifier:
+        case bundleIdentifier + ".CopyLine":
             copyLines()
-        case cutLineIdentifier:
+        case bundleIdentifier + ".CutLine":
             copyLines()
             deleteLines(indexSet: indexSet)
-        case joinLinesIdentifier:
+        case bundleIdentifier + ".JoinLines":
             let newLine: String
             if indexSet.count == 1 {
                 let currentRow = indexSet.last!
@@ -81,16 +75,12 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 invocation.buffer.lines[currentRow] = newLine
                 invocation.buffer.lines.removeObject(at: currentRow + 1)
                 
-                let lineSelection = XCSourceTextRange()
-                lineSelection.start = XCSourceTextPosition(line: textRange.start.line, column: firstLine.characters.count)
                 if textRange.start.column == textRange.end.column {
+                    let lineSelection = XCSourceTextRange()
+                    lineSelection.start = XCSourceTextPosition(line: textRange.start.line, column: firstLine.characters.count)
                     lineSelection.end = lineSelection.start
                     invocation.buffer.selections.setArray([lineSelection])
                 }
-                else {
-               
-                }
-                
             }
             else {
                 var lines = [String]()
