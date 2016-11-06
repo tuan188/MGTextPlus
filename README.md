@@ -1,12 +1,14 @@
 # MGTextPlus
 Xcode Source Editor Extension
 
-- Duplicate lines (recommended hotkey: Option–Command-Down Arrow)
-- Delete lines (recommended hotkey: Command-D)
-- Copy lines (recommended hotkey: Option-C)
-- Cut lines (recommended hotkey: Option-X)
+- Copy Line
+- Cut Line
+- Delete Line
+- Duplicate Line
+- Join Lines
+- Remove Empty Lines
 
-<img width="231" alt="menu" src="https://cloud.githubusercontent.com/assets/6461902/19998414/417cc21e-a29f-11e6-8f30-836843b58022.png">
+<img width="253" alt="MGTextPlus - Line" src="https://cloud.githubusercontent.com/assets/6461902/20035369/1baff60c-a414-11e6-8a5d-ab6438f64ec5.png">
 
 Duplicate lines:
 
