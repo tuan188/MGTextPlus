@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC14B4321DD024270045B3F3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC81FFB41DC0AEFE00A07CD6 /* Cocoa.framework */; };
+		BC14B4371DD024270045B3F3 /* SourceEditorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC14B4361DD024270045B3F3 /* SourceEditorExtension.swift */; };
+		BC14B4391DD024270045B3F3 /* SourceEditorCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC14B4381DD024270045B3F3 /* SourceEditorCommand.swift */; };
+		BC14B43D1DD024270045B3F3 /* EditorPlus.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BC14B4311DD024270045B3F3 /* EditorPlus.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BC14B4411DD0256A0045B3F3 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA270801DCE169C00F87634 /* StringExtension.swift */; };
 		BC81FFA21DC0AE2400A07CD6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC81FFA11DC0AE2400A07CD6 /* AppDelegate.swift */; };
 		BC81FFA41DC0AE2400A07CD6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC81FFA31DC0AE2400A07CD6 /* Assets.xcassets */; };
 		BC81FFA71DC0AE2400A07CD6 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC81FFA51DC0AE2400A07CD6 /* MainMenu.xib */; };
@@ -24,6 +29,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		BC14B43B1DD024270045B3F3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC81FF961DC0AE2300A07CD6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BC14B4301DD024270045B3F3;
+			remoteInfo = EditorPlus;
+		};
 		BCA270661DCD83D700F87634 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BC81FF961DC0AE2300A07CD6 /* Project object */;
@@ -49,6 +61,7 @@
 			files = (
 				BCA270681DCD83D700F87634 /* Line.appex in Embed App Extensions */,
 				BCA2707C1DCD84F100F87634 /* ConvertCase.appex in Embed App Extensions */,
+				BC14B43D1DD024270045B3F3 /* EditorPlus.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -56,6 +69,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BC14B4311DD024270045B3F3 /* EditorPlus.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EditorPlus.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC14B4351DD024270045B3F3 /* EditorPlus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EditorPlus.entitlements; sourceTree = "<group>"; };
+		BC14B4361DD024270045B3F3 /* SourceEditorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorExtension.swift; sourceTree = "<group>"; };
+		BC14B4381DD024270045B3F3 /* SourceEditorCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorCommand.swift; sourceTree = "<group>"; };
+		BC14B43A1DD024270045B3F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC81FF9E1DC0AE2400A07CD6 /* MGTextPlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MGTextPlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC81FFA11DC0AE2400A07CD6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC81FFA31DC0AE2400A07CD6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -76,6 +94,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		BC14B42E1DD024270045B3F3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC14B4321DD024270045B3F3 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BC81FF9B1DC0AE2300A07CD6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -102,12 +128,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BC14B4331DD024270045B3F3 /* EditorPlus */ = {
+			isa = PBXGroup;
+			children = (
+				BC14B4361DD024270045B3F3 /* SourceEditorExtension.swift */,
+				BC14B4381DD024270045B3F3 /* SourceEditorCommand.swift */,
+				BC14B43A1DD024270045B3F3 /* Info.plist */,
+				BC14B4341DD024270045B3F3 /* Supporting Files */,
+			);
+			path = EditorPlus;
+			sourceTree = "<group>";
+		};
+		BC14B4341DD024270045B3F3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BC14B4351DD024270045B3F3 /* EditorPlus.entitlements */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		BC81FF951DC0AE2300A07CD6 = {
 			isa = PBXGroup;
 			children = (
 				BC81FFA01DC0AE2400A07CD6 /* MGTextPlus */,
 				BCA2705E1DCD83D700F87634 /* Line */,
 				BCA270721DCD84F100F87634 /* ConvertCase */,
+				BC14B4331DD024270045B3F3 /* EditorPlus */,
 				BC81FFB31DC0AEFE00A07CD6 /* Frameworks */,
 				BC81FF9F1DC0AE2400A07CD6 /* Products */,
 			);
@@ -119,6 +165,7 @@
 				BC81FF9E1DC0AE2400A07CD6 /* MGTextPlus.app */,
 				BCA2705C1DCD83D700F87634 /* Line.appex */,
 				BCA270701DCD84F100F87634 /* ConvertCase.appex */,
+				BC14B4311DD024270045B3F3 /* EditorPlus.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -184,6 +231,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		BC14B4301DD024270045B3F3 /* EditorPlus */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BC14B4401DD024270045B3F3 /* Build configuration list for PBXNativeTarget "EditorPlus" */;
+			buildPhases = (
+				BC14B42D1DD024270045B3F3 /* Sources */,
+				BC14B42E1DD024270045B3F3 /* Frameworks */,
+				BC14B42F1DD024270045B3F3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EditorPlus;
+			productName = EditorPlus;
+			productReference = BC14B4311DD024270045B3F3 /* EditorPlus.appex */;
+			productType = "com.apple.product-type.xcode-extension";
+		};
 		BC81FF9D1DC0AE2300A07CD6 /* MGTextPlus */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BC81FFAB1DC0AE2400A07CD6 /* Build configuration list for PBXNativeTarget "MGTextPlus" */;
@@ -198,6 +262,7 @@
 			dependencies = (
 				BCA270671DCD83D700F87634 /* PBXTargetDependency */,
 				BCA2707B1DCD84F100F87634 /* PBXTargetDependency */,
+				BC14B43C1DD024270045B3F3 /* PBXTargetDependency */,
 			);
 			name = MGTextPlus;
 			productName = MGTextPlus;
@@ -248,6 +313,11 @@
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Tuan Truong";
 				TargetAttributes = {
+					BC14B4301DD024270045B3F3 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = NN74NJ78BB;
+						ProvisioningStyle = Automatic;
+					};
 					BC81FF9D1DC0AE2300A07CD6 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = NN74NJ78BB;
@@ -281,11 +351,19 @@
 				BC81FF9D1DC0AE2300A07CD6 /* MGTextPlus */,
 				BCA2705B1DCD83D700F87634 /* Line */,
 				BCA2706F1DCD84F100F87634 /* ConvertCase */,
+				BC14B4301DD024270045B3F3 /* EditorPlus */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		BC14B42F1DD024270045B3F3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BC81FF9C1DC0AE2300A07CD6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -312,6 +390,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		BC14B42D1DD024270045B3F3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC14B4371DD024270045B3F3 /* SourceEditorExtension.swift in Sources */,
+				BC14B4391DD024270045B3F3 /* SourceEditorCommand.swift in Sources */,
+				BC14B4411DD0256A0045B3F3 /* StringExtension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BC81FF9A1DC0AE2300A07CD6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -344,6 +432,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		BC14B43C1DD024270045B3F3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BC14B4301DD024270045B3F3 /* EditorPlus */;
+			targetProxy = BC14B43B1DD024270045B3F3 /* PBXContainerItemProxy */;
+		};
 		BCA270671DCD83D700F87634 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BCA2705B1DCD83D700F87634 /* Line */;
@@ -368,6 +461,40 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		BC14B43E1DD024270045B3F3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = EditorPlus/EditorPlus.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = NN74NJ78BB;
+				INFOPLIST_FILE = EditorPlus/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = truong.tuan.MGTextPlus.EditorPlus;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		BC14B43F1DD024270045B3F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = EditorPlus/EditorPlus.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = NN74NJ78BB;
+				INFOPLIST_FILE = EditorPlus/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = truong.tuan.MGTextPlus.EditorPlus;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 		BC81FFA91DC0AE2400A07CD6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -561,6 +688,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		BC14B4401DD024270045B3F3 /* Build configuration list for PBXNativeTarget "EditorPlus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC14B43E1DD024270045B3F3 /* Debug */,
+				BC14B43F1DD024270045B3F3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		BC81FF991DC0AE2300A07CD6 /* Build configuration list for PBXProject "MGTextPlus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -586,6 +721,7 @@
 				BCA2706A1DCD83D700F87634 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BCA2707D1DCD84F100F87634 /* Build configuration list for PBXNativeTarget "ConvertCase" */ = {
 			isa = XCConfigurationList;
@@ -594,6 +730,7 @@
 				BCA2707F1DCD84F100F87634 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

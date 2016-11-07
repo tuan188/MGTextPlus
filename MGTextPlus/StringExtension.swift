@@ -24,4 +24,10 @@ extension String {
                                          with: "",
                                          options: CompareOptions.regularExpression)
     }
+    
+    func removeComment() -> String {
+        return self.replacingOccurrences(of: "//.*$",
+                                         with: "",
+                                         options: CompareOptions.regularExpression)
+    }
 }
