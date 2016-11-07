@@ -12,7 +12,7 @@ Xcode Source Editor Extension
 
 ## Duplicate Line:
 
-<img width="520" alt="Duplicate Line" src="https://cloud.githubusercontent.com/assets/6461902/20035422/a3da6f7e-a416-11e6-869f-d4a24bd0fc38.gif">
+<img width="520" alt="Duplicate Line" src="https://github.com/tuan188/MGTextPlus/blob/develop/GIF/duplicate%20line.gif">
 
 ## Delete Line:
 
@@ -20,8 +20,8 @@ Xcode Source Editor Extension
 
 ## Join Lines:
 
-<img width="520" alt="Join Lines" src="https://cloud.githubusercontent.com/assets/6461902/20035502/73a28c30-a419-11e6-9d71-96586e349b04.gif">
+<img width="520" alt="Join Lines" src="https://github.com/tuan188/MGTextPlus/blob/develop/GIF/join%20lines.gif">
 
 ## Remove Empty Lines:
 
-<img width="520" alt="Remove Empty Lines" src="https://cloud.githubusercontent.com/assets/6461902/20035485/ec00ab72-a418-11e6-8ee8-e46666ddd9fa.gif">
+<img width="520" alt="Remove Empty Lines" src="https://github.com/tuan188/MGTextPlus/blob/develop/GIF/remove%20empty%20lines.gif">
