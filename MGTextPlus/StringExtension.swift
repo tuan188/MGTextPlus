@@ -26,7 +26,7 @@ extension String {
     }
     
     func removeComment() -> String {
-        return self.replacingOccurrences(of: "//.*$",
+        return self.replacingOccurrences(of: "//[^\"\n]+$",
                                          with: "",
                                          options: CompareOptions.regularExpression)
     }

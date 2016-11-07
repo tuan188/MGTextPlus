@@ -695,6 +695,7 @@
 				BC14B43F1DD024270045B3F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BC81FF991DC0AE2300A07CD6 /* Build configuration list for PBXProject "MGTextPlus" */ = {
 			isa = XCConfigurationList;

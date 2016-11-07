@@ -39,11 +39,14 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         case bundleIdentifier + ".RemoveComment":
             var commentIndexArray = [Int]()
             for lineIndex in textRange.start.line...textRange.end.line {
+                guard lineIndex < invocation.buffer.lines.count else {
+                    break
+                }
                 let line = invocation.buffer.lines[lineIndex] as! String
                 if line.trim().hasPrefix("//") {
                     commentIndexArray.append(lineIndex)
                 }
-                else {
+                else if line.contains("//") {
                     invocation.buffer.lines[lineIndex] = line.removeComment().trimEnd()
                 }
             }
