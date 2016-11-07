@@ -16,7 +16,7 @@ Xcode Source Editor Extension
 
 ## Delete Line:
 
-<img width="520" alt="Delete Line" src="https://cloud.githubusercontent.com/assets/6461902/20035421/a02b826e-a416-11e6-9459-0343b84fdf5c.gif">
+<img width="520" alt="Delete Line" src="https://github.com/tuan188/MGTextPlus/blob/develop/GIF/delete%20line.gif">
 
 ## Join Lines:
 
