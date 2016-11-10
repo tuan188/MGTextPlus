@@ -50,8 +50,10 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                     invocation.buffer.lines[lineIndex] = line.removeComment().trimEnd()
                 }
             }
-            let indexSetToRemove = IndexSet(commentIndexArray)
-            deleteLines(indexSet: indexSetToRemove)
+            if commentIndexArray.count > 0 {
+                let indexSetToRemove = IndexSet(commentIndexArray)
+                deleteLines(indexSet: indexSetToRemove)
+            }
         default:
             break
         }
