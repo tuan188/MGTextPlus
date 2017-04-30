@@ -19,13 +19,8 @@
 		BCA270621DCD83D700F87634 /* SourceEditorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA270611DCD83D700F87634 /* SourceEditorExtension.swift */; };
 		BCA270641DCD83D700F87634 /* SourceEditorCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA270631DCD83D700F87634 /* SourceEditorCommand.swift */; };
 		BCA270681DCD83D700F87634 /* Line.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BCA2705C1DCD83D700F87634 /* Line.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		BCA270711DCD84F100F87634 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC81FFB41DC0AEFE00A07CD6 /* Cocoa.framework */; };
-		BCA270761DCD84F100F87634 /* SourceEditorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA270751DCD84F100F87634 /* SourceEditorExtension.swift */; };
-		BCA270781DCD84F100F87634 /* SourceEditorCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA270771DCD84F100F87634 /* SourceEditorCommand.swift */; };
-		BCA2707C1DCD84F100F87634 /* ConvertCase.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BCA270701DCD84F100F87634 /* ConvertCase.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BCA270811DCE169C00F87634 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA270801DCE169C00F87634 /* StringExtension.swift */; };
 		BCA270821DCE169C00F87634 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA270801DCE169C00F87634 /* StringExtension.swift */; };
-		BCA270831DCE169C00F87634 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA270801DCE169C00F87634 /* StringExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,13 +38,6 @@
 			remoteGlobalIDString = BCA2705B1DCD83D700F87634;
 			remoteInfo = Line;
 		};
-		BCA2707A1DCD84F100F87634 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC81FF961DC0AE2300A07CD6 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BCA2706F1DCD84F100F87634;
-			remoteInfo = ConvertCase;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -60,7 +48,6 @@
 			dstSubfolderSpec = 13;
 			files = (
 				BCA270681DCD83D700F87634 /* Line.appex in Embed App Extensions */,
-				BCA2707C1DCD84F100F87634 /* ConvertCase.appex in Embed App Extensions */,
 				BC14B43D1DD024270045B3F3 /* EditorPlus.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
@@ -85,11 +72,6 @@
 		BCA270611DCD83D700F87634 /* SourceEditorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorExtension.swift; sourceTree = "<group>"; };
 		BCA270631DCD83D700F87634 /* SourceEditorCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorCommand.swift; sourceTree = "<group>"; };
 		BCA270651DCD83D700F87634 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BCA270701DCD84F100F87634 /* ConvertCase.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ConvertCase.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		BCA270741DCD84F100F87634 /* ConvertCase.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ConvertCase.entitlements; sourceTree = "<group>"; };
-		BCA270751DCD84F100F87634 /* SourceEditorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorExtension.swift; sourceTree = "<group>"; };
-		BCA270771DCD84F100F87634 /* SourceEditorCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorCommand.swift; sourceTree = "<group>"; };
-		BCA270791DCD84F100F87634 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCA270801DCE169C00F87634 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,14 +96,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCA2705D1DCD83D700F87634 /* Cocoa.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BCA2706D1DCD84F100F87634 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BCA270711DCD84F100F87634 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,7 +126,6 @@
 			children = (
 				BC81FFA01DC0AE2400A07CD6 /* MGTextPlus */,
 				BCA2705E1DCD83D700F87634 /* Line */,
-				BCA270721DCD84F100F87634 /* ConvertCase */,
 				BC14B4331DD024270045B3F3 /* EditorPlus */,
 				BC81FFB31DC0AEFE00A07CD6 /* Frameworks */,
 				BC81FF9F1DC0AE2400A07CD6 /* Products */,
@@ -164,7 +137,6 @@
 			children = (
 				BC81FF9E1DC0AE2400A07CD6 /* MGTextPlus.app */,
 				BCA2705C1DCD83D700F87634 /* Line.appex */,
-				BCA270701DCD84F100F87634 /* ConvertCase.appex */,
 				BC14B4311DD024270045B3F3 /* EditorPlus.appex */,
 			);
 			name = Products;
@@ -209,25 +181,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		BCA270721DCD84F100F87634 /* ConvertCase */ = {
-			isa = PBXGroup;
-			children = (
-				BCA270751DCD84F100F87634 /* SourceEditorExtension.swift */,
-				BCA270771DCD84F100F87634 /* SourceEditorCommand.swift */,
-				BCA270791DCD84F100F87634 /* Info.plist */,
-				BCA270731DCD84F100F87634 /* Supporting Files */,
-			);
-			path = ConvertCase;
-			sourceTree = "<group>";
-		};
-		BCA270731DCD84F100F87634 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				BCA270741DCD84F100F87634 /* ConvertCase.entitlements */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -261,7 +214,6 @@
 			);
 			dependencies = (
 				BCA270671DCD83D700F87634 /* PBXTargetDependency */,
-				BCA2707B1DCD84F100F87634 /* PBXTargetDependency */,
 				BC14B43C1DD024270045B3F3 /* PBXTargetDependency */,
 			);
 			name = MGTextPlus;
@@ -284,23 +236,6 @@
 			name = Line;
 			productName = Line;
 			productReference = BCA2705C1DCD83D700F87634 /* Line.appex */;
-			productType = "com.apple.product-type.xcode-extension";
-		};
-		BCA2706F1DCD84F100F87634 /* ConvertCase */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BCA2707D1DCD84F100F87634 /* Build configuration list for PBXNativeTarget "ConvertCase" */;
-			buildPhases = (
-				BCA2706C1DCD84F100F87634 /* Sources */,
-				BCA2706D1DCD84F100F87634 /* Frameworks */,
-				BCA2706E1DCD84F100F87634 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = ConvertCase;
-			productName = ConvertCase;
-			productReference = BCA270701DCD84F100F87634 /* ConvertCase.appex */;
 			productType = "com.apple.product-type.xcode-extension";
 		};
 /* End PBXNativeTarget section */
@@ -328,11 +263,6 @@
 						DevelopmentTeam = NN74NJ78BB;
 						ProvisioningStyle = Automatic;
 					};
-					BCA2706F1DCD84F100F87634 = {
-						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = NN74NJ78BB;
-						ProvisioningStyle = Automatic;
-					};
 				};
 			};
 			buildConfigurationList = BC81FF991DC0AE2300A07CD6 /* Build configuration list for PBXProject "MGTextPlus" */;
@@ -350,7 +280,6 @@
 			targets = (
 				BC81FF9D1DC0AE2300A07CD6 /* MGTextPlus */,
 				BCA2705B1DCD83D700F87634 /* Line */,
-				BCA2706F1DCD84F100F87634 /* ConvertCase */,
 				BC14B4301DD024270045B3F3 /* EditorPlus */,
 			);
 		};
@@ -374,13 +303,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		BCA2705A1DCD83D700F87634 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BCA2706E1DCD84F100F87634 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -419,16 +341,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BCA2706C1DCD84F100F87634 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BCA270761DCD84F100F87634 /* SourceEditorExtension.swift in Sources */,
-				BCA270781DCD84F100F87634 /* SourceEditorCommand.swift in Sources */,
-				BCA270831DCE169C00F87634 /* StringExtension.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -441,11 +353,6 @@
 			isa = PBXTargetDependency;
 			target = BCA2705B1DCD83D700F87634 /* Line */;
 			targetProxy = BCA270661DCD83D700F87634 /* PBXContainerItemProxy */;
-		};
-		BCA2707B1DCD84F100F87634 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BCA2706F1DCD84F100F87634 /* ConvertCase */;
-			targetProxy = BCA2707A1DCD84F100F87634 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -651,40 +558,6 @@
 			};
 			name = Release;
 		};
-		BCA2707E1DCD84F100F87634 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = ConvertCase/ConvertCase.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = NN74NJ78BB;
-				INFOPLIST_FILE = ConvertCase/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = truong.tuan.MGTextPlus.ConvertCase;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-			};
-			name = Debug;
-		};
-		BCA2707F1DCD84F100F87634 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = ConvertCase/ConvertCase.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = NN74NJ78BB;
-				INFOPLIST_FILE = ConvertCase/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = truong.tuan.MGTextPlus.ConvertCase;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -720,15 +593,6 @@
 			buildConfigurations = (
 				BCA270691DCD83D700F87634 /* Debug */,
 				BCA2706A1DCD83D700F87634 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		BCA2707D1DCD84F100F87634 /* Build configuration list for PBXNativeTarget "ConvertCase" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BCA2707E1DCD84F100F87634 /* Debug */,
-				BCA2707F1DCD84F100F87634 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

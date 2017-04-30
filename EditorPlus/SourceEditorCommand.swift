@@ -78,7 +78,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                     extensionName = name
                 }
                 else {
-                    extensionName = "<#Extension#>"
+                    extensionName = "<#Delegate#>"
                 }
                 let ext = "// MARK: - \(extensionName)" + "\n" + "extension \(className): \(extensionName) {\n\(spaces())\n}"
                 deleteLines(indexSet: indexSet)
