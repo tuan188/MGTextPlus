@@ -98,6 +98,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 }
                 newLine = lines.joined(separator: " ")
                 invocation.buffer.lines[indexSet.first!] = newLine
+                
                 let indexSetToRemove = IndexSet(integersIn: Range(uncheckedBounds: (lower: textRange.start.line + 1, upper: min(textRange.end.line + 1, invocation.buffer.lines.count))))
                 deleteLines(indexSet: indexSetToRemove)
                 

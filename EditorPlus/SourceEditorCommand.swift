@@ -31,7 +31,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             invocation.buffer.lines.removeObjects(at: indexSet)
             let lineSelection = XCSourceTextRange()
             lineSelection.start = XCSourceTextPosition(line: targetRange.lowerBound, column: 0)
-            lineSelection.end = XCSourceTextPosition(line: targetRange.lowerBound, column: 0)
+            lineSelection.end = lineSelection.start
             invocation.buffer.selections.setArray([lineSelection])
         }
         
@@ -54,6 +54,33 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 let indexSetToRemove = IndexSet(commentIndexArray)
                 deleteLines(indexSet: indexSetToRemove)
             }
+        case bundleIdentifier + ".AddClassExtension":
+            break
+        case bundleIdentifier + ".AddClassDelegate":
+            let pattern = "class ([^:<{ ]+)"
+            var className: String?
+            for line in invocation.buffer.lines as! [String] {
+                let groups = line.capturedGroups(withRegex: pattern)
+                if let name = groups.first, !name.isEmpty {
+                    className = name
+                    break
+                }
+            }
+            if let className = className {
+                let spaces = Array<String>(repeating: " ", count: invocation.buffer.indentationWidth).joined()
+                let delegate = "protocol \(className)Delegate: class {\n\(spaces)\n}"
+                deleteLines(indexSet: indexSet)
+                let insertTargetRange = Range(uncheckedBounds: (lower: textRange.start.line, upper: textRange.start.line + 1))
+                let insertIndexSet = IndexSet(integersIn: insertTargetRange)
+                invocation.buffer.lines.insert([delegate], at: insertIndexSet)
+                
+                let lineSelection = XCSourceTextRange()
+                lineSelection.start = XCSourceTextPosition(line: insertTargetRange.lowerBound + 1, column: invocation.buffer.indentationWidth)
+                lineSelection.end = lineSelection.start
+                invocation.buffer.selections.setArray([lineSelection])
+            }
+
+            break
         default:
             break
         }
