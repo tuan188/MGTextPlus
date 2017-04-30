@@ -27,9 +27,6 @@ Xcode Source Editor Extension
 
 <img width="520" alt="Remove Empty Lines" src="https://github.com/tuan188/MGTextPlus/blob/develop/GIF/remove%20empty%20lines.gif">
 
-### Remove Empty Lines:
-
-<img width="520" alt="Remove Empty Lines" src="https://github.com/tuan188/MGTextPlus/blob/develop/GIF/remove%20empty%20lines.gif">
 
 ## Editor+:
 
