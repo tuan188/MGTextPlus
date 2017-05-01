@@ -12,10 +12,14 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
-
+    @IBOutlet weak var versionLabel: NSTextField!
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
+
+        if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+            versionLabel.stringValue = version
+        }
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -26,5 +30,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return true
     }
    
+    @IBAction func openGithub(_ sender: Any) {
+        if let url = URL(string: "https://github.com/tuan188/MGTextPlus"), NSWorkspace.shared().open(url) {
+            print("default browser was successfully opened")
+        }
+    }
+    
+    @IBAction func close(_ sender: Any) {
+        NSApplication.shared().terminate(self)
+    }
+    
 }
 
