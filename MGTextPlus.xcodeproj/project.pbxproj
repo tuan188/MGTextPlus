@@ -11,7 +11,6 @@
 		BC14B4371DD024270045B3F3 /* SourceEditorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC14B4361DD024270045B3F3 /* SourceEditorExtension.swift */; };
 		BC14B4391DD024270045B3F3 /* SourceEditorCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC14B4381DD024270045B3F3 /* SourceEditorCommand.swift */; };
 		BC14B43D1DD024270045B3F3 /* EditorPlus.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BC14B4311DD024270045B3F3 /* EditorPlus.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		BC14B4411DD0256A0045B3F3 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA270801DCE169C00F87634 /* StringExtension.swift */; };
 		BC81FFA21DC0AE2400A07CD6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC81FFA11DC0AE2400A07CD6 /* AppDelegate.swift */; };
 		BC81FFA41DC0AE2400A07CD6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC81FFA31DC0AE2400A07CD6 /* Assets.xcassets */; };
 		BC81FFA71DC0AE2400A07CD6 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC81FFA51DC0AE2400A07CD6 /* MainMenu.xib */; };
@@ -19,8 +18,9 @@
 		BCA270621DCD83D700F87634 /* SourceEditorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA270611DCD83D700F87634 /* SourceEditorExtension.swift */; };
 		BCA270641DCD83D700F87634 /* SourceEditorCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA270631DCD83D700F87634 /* SourceEditorCommand.swift */; };
 		BCA270681DCD83D700F87634 /* Line.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BCA2705C1DCD83D700F87634 /* Line.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		BCA270811DCE169C00F87634 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA270801DCE169C00F87634 /* StringExtension.swift */; };
-		BCA270821DCE169C00F87634 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA270801DCE169C00F87634 /* StringExtension.swift */; };
+		BCB6175C1EB6F2AA0011DA38 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB6175B1EB6F2AA0011DA38 /* StringExtension.swift */; };
+		BCB6175D1EB6F2AA0011DA38 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB6175B1EB6F2AA0011DA38 /* StringExtension.swift */; };
+		BCB6175E1EB6F2AA0011DA38 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB6175B1EB6F2AA0011DA38 /* StringExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,7 +61,7 @@
 		BC14B4361DD024270045B3F3 /* SourceEditorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorExtension.swift; sourceTree = "<group>"; };
 		BC14B4381DD024270045B3F3 /* SourceEditorCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorCommand.swift; sourceTree = "<group>"; };
 		BC14B43A1DD024270045B3F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BC81FF9E1DC0AE2400A07CD6 /* MGTextPlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MGTextPlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC81FF9E1DC0AE2400A07CD6 /* TextPlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TextPlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC81FFA11DC0AE2400A07CD6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC81FFA31DC0AE2400A07CD6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BC81FFA61DC0AE2400A07CD6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -72,7 +72,8 @@
 		BCA270611DCD83D700F87634 /* SourceEditorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorExtension.swift; sourceTree = "<group>"; };
 		BCA270631DCD83D700F87634 /* SourceEditorCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorCommand.swift; sourceTree = "<group>"; };
 		BCA270651DCD83D700F87634 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BCA270801DCE169C00F87634 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		BCB6175B1EB6F2AA0011DA38 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		BCB617631EB6F34E0011DA38 /* XcodeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XcodeKit.framework; path = Library/Frameworks/XcodeKit.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +125,7 @@
 		BC81FF951DC0AE2300A07CD6 = {
 			isa = PBXGroup;
 			children = (
+				BCB6175A1EB6F27E0011DA38 /* Extensions */,
 				BC81FFA01DC0AE2400A07CD6 /* MGTextPlus */,
 				BCA2705E1DCD83D700F87634 /* Line */,
 				BC14B4331DD024270045B3F3 /* EditorPlus */,
@@ -135,7 +137,7 @@
 		BC81FF9F1DC0AE2400A07CD6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BC81FF9E1DC0AE2400A07CD6 /* MGTextPlus.app */,
+				BC81FF9E1DC0AE2400A07CD6 /* TextPlus.app */,
 				BCA2705C1DCD83D700F87634 /* Line.appex */,
 				BC14B4311DD024270045B3F3 /* EditorPlus.appex */,
 			);
@@ -149,7 +151,6 @@
 				BC81FFA31DC0AE2400A07CD6 /* Assets.xcassets */,
 				BC81FFA51DC0AE2400A07CD6 /* MainMenu.xib */,
 				BC81FFA81DC0AE2400A07CD6 /* Info.plist */,
-				BCA270801DCE169C00F87634 /* StringExtension.swift */,
 			);
 			path = MGTextPlus;
 			sourceTree = "<group>";
@@ -157,6 +158,7 @@
 		BC81FFB31DC0AEFE00A07CD6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BCB617631EB6F34E0011DA38 /* XcodeKit.framework */,
 				BC81FFB41DC0AEFE00A07CD6 /* Cocoa.framework */,
 			);
 			name = Frameworks;
@@ -181,6 +183,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		BCB6175A1EB6F27E0011DA38 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BCB6175B1EB6F2AA0011DA38 /* StringExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -201,9 +211,9 @@
 			productReference = BC14B4311DD024270045B3F3 /* EditorPlus.appex */;
 			productType = "com.apple.product-type.xcode-extension";
 		};
-		BC81FF9D1DC0AE2300A07CD6 /* MGTextPlus */ = {
+		BC81FF9D1DC0AE2300A07CD6 /* TextPlus */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BC81FFAB1DC0AE2400A07CD6 /* Build configuration list for PBXNativeTarget "MGTextPlus" */;
+			buildConfigurationList = BC81FFAB1DC0AE2400A07CD6 /* Build configuration list for PBXNativeTarget "TextPlus" */;
 			buildPhases = (
 				BC81FF9A1DC0AE2300A07CD6 /* Sources */,
 				BC81FF9B1DC0AE2300A07CD6 /* Frameworks */,
@@ -216,9 +226,9 @@
 				BCA270671DCD83D700F87634 /* PBXTargetDependency */,
 				BC14B43C1DD024270045B3F3 /* PBXTargetDependency */,
 			);
-			name = MGTextPlus;
+			name = TextPlus;
 			productName = MGTextPlus;
-			productReference = BC81FF9E1DC0AE2400A07CD6 /* MGTextPlus.app */;
+			productReference = BC81FF9E1DC0AE2400A07CD6 /* TextPlus.app */;
 			productType = "com.apple.product-type.application";
 		};
 		BCA2705B1DCD83D700F87634 /* Line */ = {
@@ -278,7 +288,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BC81FF9D1DC0AE2300A07CD6 /* MGTextPlus */,
+				BC81FF9D1DC0AE2300A07CD6 /* TextPlus */,
 				BCA2705B1DCD83D700F87634 /* Line */,
 				BC14B4301DD024270045B3F3 /* EditorPlus */,
 			);
@@ -318,7 +328,7 @@
 			files = (
 				BC14B4371DD024270045B3F3 /* SourceEditorExtension.swift in Sources */,
 				BC14B4391DD024270045B3F3 /* SourceEditorCommand.swift in Sources */,
-				BC14B4411DD0256A0045B3F3 /* StringExtension.swift in Sources */,
+				BCB6175E1EB6F2AA0011DA38 /* StringExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,7 +336,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCA270811DCE169C00F87634 /* StringExtension.swift in Sources */,
+				BCB6175C1EB6F2AA0011DA38 /* StringExtension.swift in Sources */,
 				BC81FFA21DC0AE2400A07CD6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -337,7 +347,7 @@
 			files = (
 				BCA270621DCD83D700F87634 /* SourceEditorExtension.swift in Sources */,
 				BCA270641DCD83D700F87634 /* SourceEditorCommand.swift in Sources */,
-				BCA270821DCE169C00F87634 /* StringExtension.swift in Sources */,
+				BCB6175D1EB6F2AA0011DA38 /* StringExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -579,7 +589,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BC81FFAB1DC0AE2400A07CD6 /* Build configuration list for PBXNativeTarget "MGTextPlus" */ = {
+		BC81FFAB1DC0AE2400A07CD6 /* Build configuration list for PBXNativeTarget "TextPlus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BC81FFAC1DC0AE2400A07CD6 /* Debug */,

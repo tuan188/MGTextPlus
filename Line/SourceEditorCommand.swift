@@ -15,14 +15,15 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
     func perform(with invocation: XCSourceEditorCommandInvocation, completionHandler: @escaping (Error?) -> Void ) -> Void {
         guard let textRange = invocation.buffer.selections.firstObject as? XCSourceTextRange,
             invocation.buffer.lines.count > 0 else {
-                completionHandler(nil)
-                return
+            completionHandler(nil)
+            return
         }
         
         guard let bundleIdentifier = Bundle.main.bundleIdentifier else {
             completionHandler(nil)
             return
         }
+        
         
         let targetRange = Range(uncheckedBounds: (lower: textRange.start.line, upper: min(textRange.end.line + 1, invocation.buffer.lines.count)))
         let indexSet = IndexSet(integersIn: targetRange)
@@ -36,15 +37,26 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             invocation.buffer.selections.setArray([lineSelection])
         }
         
-        func copyLines() {
+        func copyLines(_ lines: [String]) {
             var copyLines = [String]()
-            for line in selectedLines {
-                copyLines.append(line as! String)
+            for line in selectedLines as! [String] {
+                copyLines.append(line)
             }
             let newString = copyLines.joined()
             let pasteboard = NSPasteboard.general()
             pasteboard.declareTypes([NSPasteboardTypeString], owner: nil)
             pasteboard.setString(newString, forType: NSPasteboardTypeString)
+        }
+        
+        func firstClassName() -> String? {
+            let pattern = "class ([^:<{ ]+)"
+            for line in invocation.buffer.lines as! [String] {
+                let groups = line.capturedGroups(withRegex: pattern)
+                if let className = groups.first, !className.isEmpty {
+                    return className
+                }
+            }
+            return nil
         }
         
         // Switch all different commands id based which defined in Info.plist
@@ -58,9 +70,9 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             invocation.buffer.lines.insert(selectedLines, at: indexSet)
             invocation.buffer.selections.setArray([lineSelection])
         case bundleIdentifier + ".CopyLine":
-            copyLines()
+            copyLines(selectedLines as! [String])
         case bundleIdentifier + ".CutLine":
-            copyLines()
+            copyLines(selectedLines as! [String])
             deleteLines(indexSet: indexSet)
         case bundleIdentifier + ".JoinLines":
             let newLine: String
@@ -126,16 +138,16 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 leadingSpaces = firstLineText.leadingSpaces()
             }
             
-            var resultArray = [String]()
+            var remainLines = [String]()
             
             for i in 1..<textArray.count {
                 let text = textArray[i].trim()
                 if !text.isEmpty {
-                    resultArray.append(leadingSpaces + textArray[i].trim())
+                    remainLines.append(leadingSpaces + textArray[i].trim())
                 }
             }
             
-            let result = [textArray[0], resultArray.joined(separator: ",")].joined(separator: "\n")
+            let result = [textArray[0], remainLines.joined(separator: ",\n")].joined(separator: "\n")
             deleteLines(indexSet: indexSet)
             
             let insertTargetRange = Range(uncheckedBounds: (lower: textRange.start.line, upper: textRange.start.line + 1))

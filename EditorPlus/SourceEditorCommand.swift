@@ -8,6 +8,7 @@
 
 import Foundation
 import XcodeKit
+import AppKit
 
 class SourceEditorCommand: NSObject, XCSourceEditorCommand {
     
@@ -23,6 +24,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             return
         }
         
+        
         let targetRange = Range(uncheckedBounds: (lower: textRange.start.line, upper: min(textRange.end.line + 1, invocation.buffer.lines.count)))
         let indexSet = IndexSet(integersIn: targetRange)
         let selectedLines = invocation.buffer.lines.objects(at: indexSet)
@@ -31,11 +33,22 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             invocation.buffer.lines.removeObjects(at: indexSet)
             let lineSelection = XCSourceTextRange()
             lineSelection.start = XCSourceTextPosition(line: targetRange.lowerBound, column: 0)
-            lineSelection.end = lineSelection.start
+            lineSelection.end = XCSourceTextPosition(line: targetRange.lowerBound, column: 0)
             invocation.buffer.selections.setArray([lineSelection])
         }
         
-        func className() -> String? {
+        func copyLines(_ lines: [String]) {
+            var copyLines = [String]()
+            for line in selectedLines as! [String] {
+                copyLines.append(line)
+            }
+            let newString = copyLines.joined()
+            let pasteboard = NSPasteboard.general()
+            pasteboard.declareTypes([NSPasteboardTypeString], owner: nil)
+            pasteboard.setString(newString, forType: NSPasteboardTypeString)
+        }
+        
+        func firstClassName() -> String? {
             let pattern = "class ([^:<{ ]+)"
             for line in invocation.buffer.lines as! [String] {
                 let groups = line.capturedGroups(withRegex: pattern)
@@ -66,7 +79,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 deleteLines(indexSet: indexSetToRemove)
             }
         case bundleIdentifier + ".AddClassExtension":
-            if let className = className() {
+            if let className = firstClassName() {
                 var extensionName: String
                 if selectedLines.count == 1,
                     let name = (selectedLines[0] as? String)?.trim(),
@@ -89,7 +102,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 invocation.buffer.selections.setArray([lineSelection])
             }
         case bundleIdentifier + ".AddClassDelegate":
-            if let className = className() {
+            if let className = firstClassName() {
                 let spaces = String.spaces(count: invocation.buffer.indentationWidth)
                 let delegate = "protocol \(className)Delegate: class {\n\(spaces)\n}"
                 deleteLines(indexSet: indexSet)
@@ -109,6 +122,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         }
         
         completionHandler(nil)
+
     }
     
 }
