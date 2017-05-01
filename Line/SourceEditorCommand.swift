@@ -107,6 +107,41 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 lineSelection.end = XCSourceTextPosition(line: textRange.start.line, column: newLine.characters.count - 1)
                 invocation.buffer.selections.setArray([lineSelection])
             }
+        case bundleIdentifier + ".SplitLineByComma":
+            var textArray = [String]()
+            for line in selectedLines as! [String] {
+                textArray.append(contentsOf: line.components(separatedBy: ","))
+            }
+            let firstLine = selectedLines[0] as! String
+            var firstLineText: String?
+            if let range: Range<String.Index> = firstLine.range(of: ",") {
+                firstLineText = firstLine.substring(to: range.lowerBound) + ","
+            } else if let range: Range<String.Index> = firstLine.range(of: "\n") {
+                firstLineText = firstLine.substring(to: range.lowerBound)
+            }
+            
+            var leadingSpaces = ""
+            if let firstLineText = firstLineText {
+                textArray[0] = firstLineText.trimEnd()
+                leadingSpaces = firstLineText.leadingSpaces()
+            }
+            
+            var resultArray = [String]()
+            
+            for i in 1..<textArray.count {
+                let text = textArray[i].trim()
+                if !text.isEmpty {
+                    resultArray.append(leadingSpaces + textArray[i].trim())
+                }
+            }
+            
+            let result = [textArray[0], resultArray.joined(separator: ",")].joined(separator: "\n")
+            deleteLines(indexSet: indexSet)
+            
+            let insertTargetRange = Range(uncheckedBounds: (lower: textRange.start.line, upper: textRange.start.line + 1))
+            let insertIndexSet = IndexSet(integersIn: insertTargetRange)
+            invocation.buffer.lines.insert([result], at: insertIndexSet)
+            
         case bundleIdentifier + ".RemoveEmptyLines":
             var emptyLineIndexArray = [Int]()
             for lineIndex in textRange.start.line...textRange.end.line {

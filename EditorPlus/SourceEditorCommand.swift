@@ -46,10 +46,6 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             return nil
         }
         
-        func spaces() -> String {
-            return Array<String>(repeating: " ", count: invocation.buffer.indentationWidth).joined()
-        }
-        
         switch invocation.commandIdentifier {
         case bundleIdentifier + ".RemoveComment":
             var commentIndexArray = [Int]()
@@ -80,7 +76,8 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 else {
                     extensionName = "<#Delegate#>"
                 }
-                let ext = "// MARK: - \(extensionName)" + "\n" + "extension \(className): \(extensionName) {\n\(spaces())\n}"
+                let spaces = String.spaces(count: invocation.buffer.indentationWidth)
+                let ext = "// MARK: - \(extensionName)" + "\n" + "extension \(className): \(extensionName) {\n\(spaces)\n}"
                 deleteLines(indexSet: indexSet)
                 let insertTargetRange = Range(uncheckedBounds: (lower: textRange.start.line, upper: textRange.start.line + 1))
                 let insertIndexSet = IndexSet(integersIn: insertTargetRange)
@@ -93,7 +90,8 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             }
         case bundleIdentifier + ".AddClassDelegate":
             if let className = className() {
-                let delegate = "protocol \(className)Delegate: class {\n\(spaces())\n}"
+                let spaces = String.spaces(count: invocation.buffer.indentationWidth)
+                let delegate = "protocol \(className)Delegate: class {\n\(spaces)\n}"
                 deleteLines(indexSet: indexSet)
                 let insertTargetRange = Range(uncheckedBounds: (lower: textRange.start.line, upper: textRange.start.line + 1))
                 let insertIndexSet = IndexSet(integersIn: insertTargetRange)

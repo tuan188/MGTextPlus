@@ -28,54 +28,62 @@
 		<dict>
 			<key>XCSourceEditorCommandDefinitions</key>
 			<array>
-                <dict>
-                    <key>XCSourceEditorCommandClassName</key>
-                    <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
-                    <key>XCSourceEditorCommandIdentifier</key>
-                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).CopyLine</string>
-                    <key>XCSourceEditorCommandName</key>
-                    <string>Copy Line</string>
-                </dict>
-                <dict>
-                    <key>XCSourceEditorCommandClassName</key>
-                    <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
-                    <key>XCSourceEditorCommandIdentifier</key>
-                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).CutLine</string>
-                    <key>XCSourceEditorCommandName</key>
-                    <string>Cut Line</string>
-                </dict>
-                <dict>
-                    <key>XCSourceEditorCommandClassName</key>
-                    <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
-                    <key>XCSourceEditorCommandIdentifier</key>
-                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).DeleteLine</string>
-                    <key>XCSourceEditorCommandName</key>
-                    <string>Delete Line</string>
-                </dict>
-                <dict>
-                    <key>XCSourceEditorCommandClassName</key>
-                    <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
-                    <key>XCSourceEditorCommandIdentifier</key>
-                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).DuplicateLine</string>
-                    <key>XCSourceEditorCommandName</key>
-                    <string>Duplicate Line</string>
-                </dict>
-                <dict>
-                    <key>XCSourceEditorCommandClassName</key>
-                    <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
-                    <key>XCSourceEditorCommandIdentifier</key>
-                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).JoinLines</string>
-                    <key>XCSourceEditorCommandName</key>
-                    <string>Join Lines</string>
-                </dict>
-                <dict>
-                    <key>XCSourceEditorCommandClassName</key>
-                    <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
-                    <key>XCSourceEditorCommandIdentifier</key>
-                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).RemoveEmptyLines</string>
-                    <key>XCSourceEditorCommandName</key>
-                    <string>Remove Empty Lines</string>
-                </dict>
+				<dict>
+					<key>XCSourceEditorCommandClassName</key>
+					<string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
+					<key>XCSourceEditorCommandIdentifier</key>
+					<string>$(PRODUCT_BUNDLE_IDENTIFIER).CopyLine</string>
+					<key>XCSourceEditorCommandName</key>
+					<string>Copy Line</string>
+				</dict>
+				<dict>
+					<key>XCSourceEditorCommandClassName</key>
+					<string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
+					<key>XCSourceEditorCommandIdentifier</key>
+					<string>$(PRODUCT_BUNDLE_IDENTIFIER).CutLine</string>
+					<key>XCSourceEditorCommandName</key>
+					<string>Cut Line</string>
+				</dict>
+				<dict>
+					<key>XCSourceEditorCommandClassName</key>
+					<string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
+					<key>XCSourceEditorCommandIdentifier</key>
+					<string>$(PRODUCT_BUNDLE_IDENTIFIER).DeleteLine</string>
+					<key>XCSourceEditorCommandName</key>
+					<string>Delete Line</string>
+				</dict>
+				<dict>
+					<key>XCSourceEditorCommandClassName</key>
+					<string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
+					<key>XCSourceEditorCommandIdentifier</key>
+					<string>$(PRODUCT_BUNDLE_IDENTIFIER).DuplicateLine</string>
+					<key>XCSourceEditorCommandName</key>
+					<string>Duplicate Line</string>
+				</dict>
+				<dict>
+					<key>XCSourceEditorCommandClassName</key>
+					<string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
+					<key>XCSourceEditorCommandIdentifier</key>
+					<string>$(PRODUCT_BUNDLE_IDENTIFIER).JoinLines</string>
+					<key>XCSourceEditorCommandName</key>
+					<string>Join Lines</string>
+				</dict>
+				<dict>
+					<key>XCSourceEditorCommandClassName</key>
+					<string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
+					<key>XCSourceEditorCommandIdentifier</key>
+					<string>$(PRODUCT_BUNDLE_IDENTIFIER).SplitLineByComma</string>
+					<key>XCSourceEditorCommandName</key>
+					<string>Split Line by Comma</string>
+				</dict>
+				<dict>
+					<key>XCSourceEditorCommandClassName</key>
+					<string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
+					<key>XCSourceEditorCommandIdentifier</key>
+					<string>$(PRODUCT_BUNDLE_IDENTIFIER).RemoveEmptyLines</string>
+					<key>XCSourceEditorCommandName</key>
+					<string>Remove Empty Lines</string>
+				</dict>
 			</array>
 			<key>XCSourceEditorExtensionPrincipalClass</key>
 			<string>$(PRODUCT_MODULE_NAME).SourceEditorExtension</string>

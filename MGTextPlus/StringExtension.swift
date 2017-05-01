@@ -31,6 +31,20 @@ extension String {
                                          options: CompareOptions.regularExpression)
     }
     
+    static func spaces(count: Int) -> String {
+        return Array<String>(repeating: " ", count: count).joined()
+    }
+    
+    func leadingSpaces() -> String {
+        var numberOfSpaces = 0
+        for c in self.characters {
+            if c == " " {
+                numberOfSpaces += 1
+            }
+        }
+        return String.spaces(count: numberOfSpaces)
+    }
+    
     func capturedGroups(withRegex pattern: String) -> [String] {
         var results = [String]()
         
