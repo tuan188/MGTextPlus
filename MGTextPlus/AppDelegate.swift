@@ -7,18 +7,25 @@
 //
 
 import Cocoa
+import WebKit
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
     @IBOutlet weak var versionLabel: NSTextField!
+    @IBOutlet weak var webView: WKWebView!
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
 
         if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
             versionLabel.stringValue = version
+        }
+        
+        if let url = Bundle.main.url(forResource: "info", withExtension: "html") {
+            let request = URLRequest(url: url)
+            webView.load(request)
         }
     }
 
