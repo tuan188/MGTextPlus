@@ -73,7 +73,7 @@
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ISK-zN-l4k">
                         <rect key="frame" x="20" y="61" width="128" height="128"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="256" id="jPH-Y0-TqO"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="128" id="jPH-Y0-TqO"/>
                     </imageView>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z30-m2-TFZ">
                         <rect key="frame" x="171" y="150" width="134" height="39"/>
@@ -130,6 +130,6 @@
         </window>
     </objects>
     <resources>
-        <image name="256" width="256" height="256"/>
+        <image name="128" width="128" height="128"/>
     </resources>
 </document>
