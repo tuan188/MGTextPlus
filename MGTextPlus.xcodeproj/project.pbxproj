@@ -76,6 +76,7 @@
 		BCB6175B1EB6F2AA0011DA38 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		BCB617631EB6F34E0011DA38 /* XcodeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XcodeKit.framework; path = Library/Frameworks/XcodeKit.framework; sourceTree = DEVELOPER_DIR; };
 		BCECE48F1EB9B3AE0070385B /* info.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = info.html; sourceTree = "<group>"; };
+		BCEDD8B51EC177CD00EF7D99 /* TextPlus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TextPlus.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +128,7 @@
 		BC81FF951DC0AE2300A07CD6 = {
 			isa = PBXGroup;
 			children = (
+				BCEDD8B51EC177CD00EF7D99 /* TextPlus.entitlements */,
 				BCB6175A1EB6F27E0011DA38 /* Extensions */,
 				BC81FFA01DC0AE2400A07CD6 /* MGTextPlus */,
 				BCA2705E1DCD83D700F87634 /* Line */,
@@ -270,6 +272,11 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = NN74NJ78BB;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 					BCA2705B1DCD83D700F87634 = {
 						CreatedOnToolsVersion = 8.1;
@@ -392,7 +399,7 @@
 				INFOPLIST_FILE = EditorPlus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = truong.tuan.MGTextPlus.EditorPlus;
+				PRODUCT_BUNDLE_IDENTIFIER = truong.tuan.TextPlus.EditorPlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
@@ -409,7 +416,7 @@
 				INFOPLIST_FILE = EditorPlus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = truong.tuan.MGTextPlus.EditorPlus;
+				PRODUCT_BUNDLE_IDENTIFIER = truong.tuan.TextPlus.EditorPlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
@@ -511,13 +518,15 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TextPlus.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = NN74NJ78BB;
 				INFOPLIST_FILE = MGTextPlus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = truong.tuan.MGTextPlus;
+				PRODUCT_BUNDLE_IDENTIFIER = truong.tuan.TextPlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -527,13 +536,15 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TextPlus.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = NN74NJ78BB;
 				INFOPLIST_FILE = MGTextPlus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = truong.tuan.MGTextPlus;
+				PRODUCT_BUNDLE_IDENTIFIER = truong.tuan.TextPlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -548,7 +559,7 @@
 				INFOPLIST_FILE = Line/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = truong.tuan.MGTextPlus.Line;
+				PRODUCT_BUNDLE_IDENTIFIER = truong.tuan.TextPlus.Line;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
@@ -565,7 +576,7 @@
 				INFOPLIST_FILE = Line/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = truong.tuan.MGTextPlus.Line;
+				PRODUCT_BUNDLE_IDENTIFIER = truong.tuan.TextPlus.Line;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
