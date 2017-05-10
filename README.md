@@ -1,6 +1,8 @@
 # MGTextPlus
 Xcode Source Editor Extension
 
+Download [AppStore](https://itunes.apple.com/us/app/textplus/id1234445803)
+
 ## Editor+:
 
 - Remove Comment
