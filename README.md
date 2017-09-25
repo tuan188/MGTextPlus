@@ -29,7 +29,7 @@ Download [AppStore](https://itunes.apple.com/us/app/textplus/id1234445803)
 - Split Line by Comma
 - Remove Empty Lines
 
-<img width="253" alt="MGTextPlus - Line" src="https://cloud.githubusercontent.com/assets/6461902/20035369/1baff60c-a414-11e6-8a5d-ab6438f64ec5.png">
+<img width="253" alt="MGTextPlus - Line" src="images/menu.png">
 
 ### Duplicate Line Up:
 
