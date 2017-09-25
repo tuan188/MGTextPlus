@@ -20,6 +20,8 @@ Download [AppStore](https://itunes.apple.com/us/app/textplus/id1234445803)
 <img width="520" alt="Add Class Extension" src="https://github.com/tuan188/MGTextPlus/blob/develop/GIF/add%20class%20extension.gif">
 
 ## Line:
+- Move Line Up
+- Move Line Down
 - Copy Line
 - Cut Line
 - Delete Line
@@ -30,6 +32,14 @@ Download [AppStore](https://itunes.apple.com/us/app/textplus/id1234445803)
 - Remove Empty Lines
 
 <img width="253" alt="MGTextPlus - Line" src="images/menu.png">
+
+### Duplicate Line Up:
+
+<img width="520" alt="Duplicate Line" src="GIF/move%20line%20up.gif">
+
+### Duplicate Line Down:
+
+<img width="520" alt="Duplicate Line" src="GIF/move%20line%20down.gif">
 
 ### Duplicate Line Up:
 
