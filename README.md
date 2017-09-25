@@ -33,11 +33,11 @@ Download [AppStore](https://itunes.apple.com/us/app/textplus/id1234445803)
 
 ### Duplicate Line Up:
 
-<img width="520" alt="Duplicate Line" src="https://github.com/tuan188/MGTextPlus/blob/develop/GIF/duplicate%20line%20up.gif">
+<img width="520" alt="Duplicate Line" src="GIF/duplicate%20line%20up.gif">
 
 ### Duplicate Line Down:
 
-<img width="520" alt="Duplicate Line" src="https://github.com/tuan188/MGTextPlus/blob/develop/GIF/duplicate%20line%20down.gif">
+<img width="520" alt="Duplicate Line" src="GIF/duplicate%20line%20down.gif">
 
 ### Delete Line:
 
