@@ -76,29 +76,22 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         }
         
         func moveLine(direction: CommandDirection) {
-            // easiest way to move a selection is just to remove the line
-            // after it and insert it back before it or vice versa depending
-            // on the direction
-            var lineToRemoveAfterSelection: Int
-            var lineWhereInsertingBeforeSelection: Int
+            var lineIndexesWhereInsertingSelectionAfterMove: IndexSet
             let lineSelection = XCSourceTextRange()
             switch direction {
             case .up:
                 guard notReachingTop() else { return }
-                lineToRemoveAfterSelection = textRange.start.line - 1
-                lineWhereInsertingBeforeSelection = textRange.end.line
+                lineIndexesWhereInsertingSelectionAfterMove = IndexSet(indexSet.map { $0 - 1 })
                 lineSelection.start = XCSourceTextPosition(line: textRange.start.line - 1, column: textRange.start.column)
                 lineSelection.end = XCSourceTextPosition(line: textRange.end.line - 1, column: textRange.end.column)
             case .down:
                 guard notReachingBottom() else { return }
-                lineToRemoveAfterSelection = textRange.end.line + 1
-                lineWhereInsertingBeforeSelection = textRange.start.line
+                lineIndexesWhereInsertingSelectionAfterMove = IndexSet(indexSet.map { $0 + 1 })
                 lineSelection.start = XCSourceTextPosition(line: textRange.start.line + 1, column: textRange.start.column)
                 lineSelection.end = XCSourceTextPosition(line: textRange.end.line + 1, column: textRange.end.column)
             }
-            let textForLineAfterSelection = invocation.buffer.lines.object(at: lineToRemoveAfterSelection)
-            invocation.buffer.lines.removeObject(at: lineToRemoveAfterSelection)
-            invocation.buffer.lines.insert(textForLineAfterSelection, at: lineWhereInsertingBeforeSelection)
+            invocation.buffer.lines.removeObjects(at: indexSet)
+            invocation.buffer.lines.insert(selectedLines, at: lineIndexesWhereInsertingSelectionAfterMove)
             invocation.buffer.selections.setArray([lineSelection])
         }
         
