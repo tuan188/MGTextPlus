@@ -33,11 +33,11 @@ Download [AppStore](https://itunes.apple.com/us/app/textplus/id1234445803)
 
 <img width="253" alt="MGTextPlus - Line" src="images/menu.png">
 
-### Duplicate Line Up:
+### Move Line Up:
 
 <img width="520" alt="Duplicate Line" src="GIF/move%20line%20up.gif">
 
-### Duplicate Line Down:
+### Move Line Down:
 
 <img width="520" alt="Duplicate Line" src="GIF/move%20line%20down.gif">
 
