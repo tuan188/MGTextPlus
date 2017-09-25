@@ -10,6 +10,11 @@ import Foundation
 import XcodeKit
 import AppKit
 
+enum CommandDirection {
+    case up
+    case down
+}
+
 class SourceEditorCommand: NSObject, XCSourceEditorCommand {
     
     func perform(with invocation: XCSourceEditorCommandInvocation, completionHandler: @escaping (Error?) -> Void ) -> Void {
@@ -48,6 +53,20 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             pasteboard.setString(newString, forType: NSPasteboardTypeString)
         }
         
+        func duplicateLine(direction: CommandDirection) {
+            let lineSelection = XCSourceTextRange()
+            switch direction {
+            case .up:
+                lineSelection.start = XCSourceTextPosition(line: textRange.start.line, column: textRange.start.column)
+                lineSelection.end = XCSourceTextPosition(line: textRange.end.line, column: textRange.end.column)
+            case .down:
+                lineSelection.start = XCSourceTextPosition(line: textRange.start.line + targetRange.count, column: textRange.start.column)
+                lineSelection.end = XCSourceTextPosition(line: textRange.end.line + targetRange.count, column: textRange.end.column)
+            }
+            invocation.buffer.lines.insert(selectedLines, at: indexSet)
+            invocation.buffer.selections.setArray([lineSelection])
+        }
+        
         func firstClassName() -> String? {
             let pattern = "class ([^:<{ ]+)"
             for line in invocation.buffer.lines as! [String] {
@@ -63,12 +82,10 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         switch invocation.commandIdentifier {
         case bundleIdentifier + ".DeleteLine":
             deleteLines(indexSet: indexSet)
-        case bundleIdentifier + ".DuplicateLine":
-            let lineSelection = XCSourceTextRange()
-            lineSelection.start = XCSourceTextPosition(line: textRange.start.line + targetRange.count, column: textRange.start.column)
-            lineSelection.end = XCSourceTextPosition(line: textRange.end.line + targetRange.count, column: textRange.end.column)
-            invocation.buffer.lines.insert(selectedLines, at: indexSet)
-            invocation.buffer.selections.setArray([lineSelection])
+        case bundleIdentifier + ".DuplicateLineUp":
+            duplicateLine(direction: .up)
+        case bundleIdentifier + ".DuplicateLineDown":
+            duplicateLine(direction: .down)
         case bundleIdentifier + ".CopyLine":
             copyLines(selectedLines as! [String])
         case bundleIdentifier + ".CutLine":

@@ -56,9 +56,17 @@
 					<key>XCSourceEditorCommandClassName</key>
 					<string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
 					<key>XCSourceEditorCommandIdentifier</key>
-					<string>$(PRODUCT_BUNDLE_IDENTIFIER).DuplicateLine</string>
+					<string>$(PRODUCT_BUNDLE_IDENTIFIER).DuplicateLineUp</string>
 					<key>XCSourceEditorCommandName</key>
-					<string>Duplicate Line</string>
+					<string>Duplicate Line Up</string>
+				</dict>
+				<dict>
+					<key>XCSourceEditorCommandClassName</key>
+					<string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
+					<key>XCSourceEditorCommandIdentifier</key>
+					<string>$(PRODUCT_BUNDLE_IDENTIFIER).DuplicateLineDown</string>
+					<key>XCSourceEditorCommandName</key>
+					<string>Duplicate Line Down</string>
 				</dict>
 				<dict>
 					<key>XCSourceEditorCommandClassName</key>
