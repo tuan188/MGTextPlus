@@ -9,15 +9,15 @@ Download [AppStore](https://itunes.apple.com/us/app/textplus/id1234445803)
 
 ### Remove Comment:
 
-<img width="520" alt="Remove Empty Lines" src="https://github.com/tuan188/MGTextPlus/blob/develop/GIF/remove%20comment.gif">
+<img width="520" alt="Remove Empty Lines" src="GIF/remove%20comment.gif">
 
 ### Add Class Delegate
 
-<img width="520" alt="Add Class Delegate" src="https://github.com/tuan188/MGTextPlus/blob/develop/GIF/add%20class%20delegate.gif">
+<img width="520" alt="Add Class Delegate" src="GIF/add%20class%20delegate.gif">
 
 ### Add Class Extension
 
-<img width="520" alt="Add Class Extension" src="https://github.com/tuan188/MGTextPlus/blob/develop/GIF/add%20class%20extension.gif">
+<img width="520" alt="Add Class Extension" src="GIF/add%20class%20extension.gif">
 
 ## Line:
 - Move Line Up
@@ -51,19 +51,19 @@ Download [AppStore](https://itunes.apple.com/us/app/textplus/id1234445803)
 
 ### Delete Line:
 
-<img width="520" alt="Delete Line" src="https://github.com/tuan188/MGTextPlus/blob/develop/GIF/delete%20line.gif">
+<img width="520" alt="Delete Line" src="GIF/delete%20line.gif">
 
 ### Join Lines:
 
-<img width="520" alt="Join Lines" src="https://github.com/tuan188/MGTextPlus/blob/develop/GIF/join%20lines.gif">
+<img width="520" alt="Join Lines" src="GIF/join%20lines.gif">
 
 ### Split Line by Comma:
 
-<img width="520" alt="Join Lines" src="https://github.com/tuan188/MGTextPlus/blob/develop/GIF/split%20line%20by%20comma.gif">
+<img width="520" alt="Join Lines" src="GIF/split%20line%20by%20comma.gif">
 
 ### Remove Empty Lines:
 
-<img width="520" alt="Remove Empty Lines" src="https://github.com/tuan188/MGTextPlus/blob/develop/GIF/remove%20empty%20lines.gif">
+<img width="520" alt="Remove Empty Lines" src="GIF/remove%20empty%20lines.gif">
 
 
 
