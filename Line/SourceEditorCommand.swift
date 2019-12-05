@@ -10,14 +10,15 @@ import Foundation
 import XcodeKit
 import AppKit
 
-enum CommandDirection {
-    case up
-    case down
-}
-
 class SourceEditorCommand: NSObject, XCSourceEditorCommand {
     
-    func perform(with invocation: XCSourceEditorCommandInvocation, completionHandler: @escaping (Error?) -> Void ) -> Void {
+    enum CommandDirection {
+        case up
+        case down
+    }
+    
+    func perform(with invocation: XCSourceEditorCommandInvocation,
+                 completionHandler: @escaping (Error?) -> Void ) -> Void {
         guard let textRange = invocation.buffer.selections.firstObject as? XCSourceTextRange,
             invocation.buffer.lines.count > 0 else {
             completionHandler(nil)
@@ -29,8 +30,9 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             return
         }
         
+        let targetRange = Range(uncheckedBounds: (lower: textRange.start.line,
+                                                  upper: min(textRange.end.line + 1, invocation.buffer.lines.count)))
         
-        let targetRange = Range(uncheckedBounds: (lower: textRange.start.line, upper: min(textRange.end.line + 1, invocation.buffer.lines.count)))
         let indexSet = IndexSet(integersIn: targetRange)
         let selectedLines = invocation.buffer.lines.objects(at: indexSet)
         
@@ -43,26 +45,27 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         }
         
         func copyLines(_ lines: [String]) {
-            var copyLines = [String]()
-            for line in selectedLines as! [String] {
-                copyLines.append(line)
-            }
-            let newString = copyLines.joined()
-            let pasteboard = NSPasteboard.general()
-            pasteboard.declareTypes([NSPasteboardTypeString], owner: nil)
-            pasteboard.setString(newString, forType: NSPasteboardTypeString)
+            let pasteboard = NSPasteboard.general
+            pasteboard.declareTypes([NSPasteboard.PasteboardType.string], owner: nil)
+            pasteboard.setString(lines.joined(), forType: NSPasteboard.PasteboardType.string)
         }
         
         func duplicateLine(direction: CommandDirection) {
             let lineSelection = XCSourceTextRange()
+            
             switch direction {
             case .up:
-                lineSelection.start = XCSourceTextPosition(line: textRange.start.line, column: textRange.start.column)
-                lineSelection.end = XCSourceTextPosition(line: textRange.end.line, column: textRange.end.column)
+                lineSelection.start = XCSourceTextPosition(line: textRange.start.line,
+                                                           column: textRange.start.column)
+                lineSelection.end = XCSourceTextPosition(line: textRange.end.line,
+                                                         column: textRange.end.column)
             case .down:
-                lineSelection.start = XCSourceTextPosition(line: textRange.start.line + targetRange.count, column: textRange.start.column)
-                lineSelection.end = XCSourceTextPosition(line: textRange.end.line + targetRange.count, column: textRange.end.column)
+                lineSelection.start = XCSourceTextPosition(line: textRange.start.line + targetRange.count,
+                                                           column: textRange.start.column)
+                lineSelection.end = XCSourceTextPosition(line: textRange.end.line + targetRange.count,
+                                                         column: textRange.end.column)
             }
+            
             invocation.buffer.lines.insert(selectedLines, at: indexSet)
             invocation.buffer.selections.setArray([lineSelection])
         }
@@ -76,29 +79,39 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         }
         
         func moveLine(direction: CommandDirection) {
-            var lineIndexesWhereInsertingSelectionAfterMove: IndexSet
+            let lineIndexesWhereInsertingSelectionAfterMove: IndexSet
             let lineSelection = XCSourceTextRange()
+            
             switch direction {
             case .up:
                 guard notReachingTop() else { return }
+                
                 lineIndexesWhereInsertingSelectionAfterMove = IndexSet(indexSet.map { $0 - 1 })
-                lineSelection.start = XCSourceTextPosition(line: textRange.start.line - 1, column: textRange.start.column)
-                lineSelection.end = XCSourceTextPosition(line: textRange.end.line - 1, column: textRange.end.column)
+                lineSelection.start = XCSourceTextPosition(line: textRange.start.line - 1,
+                                                           column: textRange.start.column)
+                lineSelection.end = XCSourceTextPosition(line: textRange.end.line - 1,
+                                                         column: textRange.end.column)
             case .down:
                 guard notReachingBottom() else { return }
+                
                 lineIndexesWhereInsertingSelectionAfterMove = IndexSet(indexSet.map { $0 + 1 })
-                lineSelection.start = XCSourceTextPosition(line: textRange.start.line + 1, column: textRange.start.column)
-                lineSelection.end = XCSourceTextPosition(line: textRange.end.line + 1, column: textRange.end.column)
+                lineSelection.start = XCSourceTextPosition(line: textRange.start.line + 1,
+                                                           column: textRange.start.column)
+                lineSelection.end = XCSourceTextPosition(line: textRange.end.line + 1,
+                                                         column: textRange.end.column)
             }
+            
             invocation.buffer.lines.removeObjects(at: indexSet)
             invocation.buffer.lines.insert(selectedLines, at: lineIndexesWhereInsertingSelectionAfterMove)
             invocation.buffer.selections.setArray([lineSelection])
         }
         
         func firstClassName() -> String? {
-            let pattern = "class ([^:<{ ]+)"
-            for line in invocation.buffer.lines as! [String] {
-                let groups = line.capturedGroups(withRegex: pattern)
+            guard let lines = invocation.buffer.lines as? [String] else { return nil }
+            
+            for line in lines {
+                let groups = line.capturedGroups(withRegex: "class ([^:<{ ]+)")
+                
                 if let className = groups.first, !className.isEmpty {
                     return className
                 }
@@ -119,101 +132,123 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         case bundleIdentifier + ".DuplicateLineDown":
             duplicateLine(direction: .down)
         case bundleIdentifier + ".CopyLine":
-            copyLines(selectedLines as! [String])
+            guard let lines = selectedLines as? [String] else { break }
+            copyLines(lines)
         case bundleIdentifier + ".CutLine":
-            copyLines(selectedLines as! [String])
+            guard let lines = selectedLines as? [String] else { break }
+            copyLines(lines)
             deleteLines(indexSet: indexSet)
         case bundleIdentifier + ".JoinLines":
-            let newLine: String
             if indexSet.count == 1 {
-                let currentRow = indexSet.last!
-                guard currentRow < invocation.buffer.lines.count - 1 else {
-                    break
-                }
-                let firstLine = invocation.buffer.lines[currentRow] as! String
-                let secondLine = invocation.buffer.lines[currentRow + 1] as! String
-                newLine = firstLine.trimEnd() + " " + secondLine.trimStart()
+                guard let currentRow = indexSet.last,
+                    currentRow < invocation.buffer.lines.count - 1,
+                    let firstLine = invocation.buffer.lines[currentRow] as? String,
+                    let secondLine = invocation.buffer.lines[currentRow + 1] as? String
+                    else { break }
+                
+                let newLine = firstLine.trimEnd() + " " + secondLine.trimStart()
                 invocation.buffer.lines[currentRow] = newLine
                 invocation.buffer.lines.removeObject(at: currentRow + 1)
                 
                 if textRange.start.column == textRange.end.column {
                     let lineSelection = XCSourceTextRange()
-                    lineSelection.start = XCSourceTextPosition(line: textRange.start.line, column: firstLine.characters.count)
+                    lineSelection.start = XCSourceTextPosition(line: textRange.start.line, column: firstLine.count)
                     lineSelection.end = lineSelection.start
                     invocation.buffer.selections.setArray([lineSelection])
                 }
-            }
-            else if indexSet.count > 1 {
-                var lines = [String]()
-                for (index, line) in selectedLines.enumerated() {
-                    let line = line as! String
-                    if index == 0 {
-                        lines.append(line.trimEnd())
-                    }
-                    else if index == selectedLines.count - 1 {
-                        lines.append(line.trimStart())
-                    }
-                    else {
-                        lines.append(line.trim())
-                    }
-                }
-                newLine = lines.joined(separator: " ")
-                invocation.buffer.lines[indexSet.first!] = newLine
+            } else if indexSet.count > 1 {
+                guard let currentRow = indexSet.first else { return }
                 
-                let indexSetToRemove = IndexSet(integersIn: Range(uncheckedBounds: (lower: textRange.start.line + 1, upper: min(textRange.end.line + 1, invocation.buffer.lines.count))))
+                let selectedLines: [String] = (selectedLines as? [String])
+                    .flatMap { selectedLines -> [String] in
+                        return selectedLines.enumerated().map { index, line in
+                            if index == 0 {
+                                return line.trimEnd()
+                            } else if index == selectedLines.count - 1 {
+                                return line.trimStart()
+                            } else {
+                                return line.trim()
+                            }
+                        }
+                    } ?? []
+                
+                let newLine = selectedLines.joined(separator: " ")
+                invocation.buffer.lines[currentRow] = newLine
+                
+                let indexSetToRemove = IndexSet(
+                    integersIn: Range(
+                        uncheckedBounds: (
+                            lower: textRange.start.line + 1,
+                            upper: min(textRange.end.line + 1, invocation.buffer.lines.count)
+                        )
+                    )
+                )
+                
                 deleteLines(indexSet: indexSetToRemove)
                 
                 let lineSelection = XCSourceTextRange()
                 lineSelection.start = XCSourceTextPosition(line: textRange.start.line, column: textRange.start.column)
-                lineSelection.end = XCSourceTextPosition(line: textRange.start.line, column: newLine.characters.count - 1)
+                lineSelection.end = XCSourceTextPosition(line: textRange.start.line, column: newLine.count - 1)
                 invocation.buffer.selections.setArray([lineSelection])
             }
         case bundleIdentifier + ".SplitLineByComma":
-            var textArray = [String]()
-            for line in selectedLines as! [String] {
-                textArray.append(contentsOf: line.components(separatedBy: ","))
-            }
-            let firstLine = selectedLines[0] as! String
-            var firstLineText: String?
-            if let range: Range<String.Index> = firstLine.range(of: ",") {
-                firstLineText = firstLine.substring(to: range.lowerBound) + ","
-            } else if let range: Range<String.Index> = firstLine.range(of: "\n") {
-                firstLineText = firstLine.substring(to: range.lowerBound)
+            guard let selectedLines = selectedLines as? [String] else { return }
+            
+            var textArray = selectedLines.flatMap {
+                $0.components(separatedBy: ",")
             }
             
-            var leadingSpaces = ""
+            let firstLine = selectedLines[0]
+            let firstLineText: String?
+            
+            if let range: Range<String.Index> = firstLine.range(of: ",") {
+                firstLineText = String(firstLine[..<range.lowerBound]) + ","
+            } else if let range: Range<String.Index> = firstLine.range(of: "\n") {
+                firstLineText = String(firstLine[..<range.lowerBound])
+            } else {
+                firstLineText = nil
+            }
+            
+            let leadingSpaces: String
+            
             if let firstLineText = firstLineText {
                 textArray[0] = firstLineText.trimEnd()
                 leadingSpaces = firstLineText.leadingSpaces()
+            } else {
+                leadingSpaces = ""
             }
             
             var remainLines = [String]()
             
             for i in 1..<textArray.count {
                 let text = textArray[i].trim()
+                
                 if !text.isEmpty {
-                    remainLines.append(leadingSpaces + textArray[i].trim())
+                    remainLines.append(leadingSpaces + text)
                 }
             }
             
             let result = [textArray[0], remainLines.joined(separator: ",\n")].joined(separator: "\n")
             deleteLines(indexSet: indexSet)
             
-            let insertTargetRange = Range(uncheckedBounds: (lower: textRange.start.line, upper: textRange.start.line + 1))
+            let insertTargetRange = Range(
+                uncheckedBounds: (lower: textRange.start.line, upper: textRange.start.line + 1)
+            )
             let insertIndexSet = IndexSet(integersIn: insertTargetRange)
             invocation.buffer.lines.insert([result], at: insertIndexSet)
-            
         case bundleIdentifier + ".RemoveEmptyLines":
             var emptyLineIndexArray = [Int]()
+            
             for lineIndex in textRange.start.line...textRange.end.line {
-                guard lineIndex < invocation.buffer.lines.count - 1 else {
-                    break
-                }
-                let line = invocation.buffer.lines[lineIndex] as! String
+                guard lineIndex < invocation.buffer.lines.count - 1,
+                    let line = invocation.buffer.lines[lineIndex] as? String
+                    else { break }
+                
                 if line.trim().isEmpty {
                     emptyLineIndexArray.append(lineIndex)
                 }
             }
+            
             let indexSetToRemove = IndexSet(emptyLineIndexArray)
             deleteLines(indexSet: indexSetToRemove)
         default:

@@ -1,5 +1,5 @@
 //
-//  StringExtension.swift
+//  String+.swift
 //  MGTextPlus
 //
 //  Created by Tuan Truong on 11/5/16.
@@ -15,8 +15,8 @@ extension String {
     
     func trimEnd() -> String {
         return self.replacingOccurrences(of: "[ \t\n]+$",
-                                          with: "",
-                                          options: CompareOptions.regularExpression)
+                                         with: "",
+                                         options: CompareOptions.regularExpression)
     }
     
     func trimStart() -> String {
@@ -32,38 +32,36 @@ extension String {
     }
     
     static func spaces(count: Int) -> String {
-        return Array<String>(repeating: " ", count: count).joined()
+        return [String](repeating: " ", count: count).joined()
     }
     
     func leadingSpaces() -> String {
         var numberOfSpaces = 0
-        for c in self.characters {
+        
+        for c in self {
             if c == " " {
                 numberOfSpaces += 1
             }
         }
+        
         return String.spaces(count: numberOfSpaces)
     }
     
     func capturedGroups(withRegex pattern: String) -> [String] {
         var results = [String]()
         
-        var regex: NSRegularExpression
-        do {
-            regex = try NSRegularExpression(pattern: pattern, options: [])
-        } catch {
+        guard let regex = try? NSRegularExpression(pattern: pattern, options: []) else {
             return results
         }
         
-        let matches = regex.matches(in: self, options: [], range: NSRange(location:0, length: self.characters.count))
-        
+        let matches = regex.matches(in: self, options: [], range: NSRange(location:0, length: self.count))
         guard let match = matches.first else { return results }
         
         let lastRangeIndex = match.numberOfRanges - 1
         guard lastRangeIndex >= 1 else { return results }
         
         for i in 1...lastRangeIndex {
-            let capturedGroupIndex = match.rangeAt(i)
+            let capturedGroupIndex = match.range(at: i)
             let matchedString = (self as NSString).substring(with: capturedGroupIndex)
             results.append(matchedString)
         }

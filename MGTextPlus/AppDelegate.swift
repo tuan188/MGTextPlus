@@ -17,8 +17,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var webView: WKWebView!
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
-
         if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
             versionLabel.stringValue = version
         }
@@ -28,23 +26,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             webView.load(request)
         }
     }
-
-    func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
-    }
     
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
         return true
     }
    
     @IBAction func openGithub(_ sender: Any) {
-        if let url = URL(string: "https://github.com/tuan188/MGTextPlus"), NSWorkspace.shared().open(url) {
-            print("default browser was successfully opened")
+        if let url = URL(string: "https://github.com/tuan188/MGTextPlus") {
+            NSWorkspace.shared.open(url)
         }
     }
     
     @IBAction func close(_ sender: Any) {
-        NSApplication.shared().terminate(self)
+        NSApplication.shared.terminate(self)
     }
     
 }
