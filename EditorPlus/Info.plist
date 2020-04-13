@@ -40,7 +40,7 @@
 					<key>XCSourceEditorCommandClassName</key>
 					<string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
 					<key>XCSourceEditorCommandIdentifier</key>
-					<string>$(PRODUCT_BUNDLE_IDENTIFIER).AddClassDelegate</string>
+					<string>$(PRODUCT_BUNDLE_IDENTIFIER).AddTypeDelegate</string>
 					<key>XCSourceEditorCommandName</key>
 					<string>Add Type Delegate</string>
 				</dict>
@@ -48,7 +48,7 @@
 					<key>XCSourceEditorCommandClassName</key>
 					<string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
 					<key>XCSourceEditorCommandIdentifier</key>
-					<string>$(PRODUCT_BUNDLE_IDENTIFIER).AddClassExtension</string>
+					<string>$(PRODUCT_BUNDLE_IDENTIFIER).AddTypeExtension</string>
 					<key>XCSourceEditorCommandName</key>
 					<string>Add Type Extension</string>
 				</dict>

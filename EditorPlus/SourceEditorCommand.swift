@@ -47,12 +47,21 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             pasteboard.declareTypes([NSPasteboard.PasteboardType.string], owner: nil)
             pasteboard.setString(lines.joined(), forType: NSPasteboard.PasteboardType.string)
         }
+
+        enum TypeOption: String {
+            case `class`
+            case `struct`
+            case `enum`
+        }
         
-        func firstClassName() -> String? {
+        func firstTypeName(options: [TypeOption]) -> String? {
             guard let lines = invocation.buffer.lines as? [String] else { return nil }
+
+            let types = options.map { $0.rawValue }.joined(separator: "|")
+            let regexp = "(?:\(types)) ([^:<{ ]+)"
             
             for line in lines {
-                let groups = line.capturedGroups(withRegex: "(?:class|struct) ([^:<{ ]+)")
+                let groups = line.capturedGroups(withRegex: regexp)
                 
                 if let className = groups.first, !className.isEmpty {
                     return className
@@ -81,8 +90,8 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 let indexSetToRemove = IndexSet(commentIndexArray)
                 deleteLines(indexSet: indexSetToRemove)
             }
-        case bundleIdentifier + ".AddClassExtension":
-            if let className = firstClassName() {
+        case bundleIdentifier + ".AddTypeExtension":
+            if let typeName = firstTypeName(options: [.class, .struct, .enum]) {
                 var extensionName: String
                 
                 if selectedLines.count == 1,
@@ -96,7 +105,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 let spaces = String.spaces(count: invocation.buffer.indentationWidth)
                 
                 let ext = "// MARK: - \(extensionName)"
-                    + "\n" + "extension \(className): \(extensionName) {\n\(spaces)\n}"
+                    + "\n" + "extension \(typeName): \(extensionName) {\n\(spaces)\n}"
                 
                 deleteLines(indexSet: indexSet)
                 
@@ -113,12 +122,12 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 lineSelection.end = lineSelection.start
                 invocation.buffer.selections.setArray([lineSelection])
             }
-        case bundleIdentifier + ".AddClassDelegate":
-            if let className = firstClassName() {
+        case bundleIdentifier + ".AddTypeDelegate":
+            if let typeName = firstTypeName(options: [.class, .struct]) {
                 deleteLines(indexSet: indexSet)
                 
                 let spaces = String.spaces(count: invocation.buffer.indentationWidth)
-                let delegate = "protocol \(className)Delegate: class {\n\(spaces)\n}"
+                let delegate = "protocol \(typeName)Delegate: class {\n\(spaces)\n}"
                 let insertTargetRange = Range(
                     uncheckedBounds: (lower: textRange.start.line, upper: textRange.start.line + 1)
                 )
