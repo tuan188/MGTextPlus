@@ -42,7 +42,7 @@
 					<key>XCSourceEditorCommandIdentifier</key>
 					<string>$(PRODUCT_BUNDLE_IDENTIFIER).AddClassDelegate</string>
 					<key>XCSourceEditorCommandName</key>
-					<string>Add Class Delegate</string>
+					<string>Add Type Delegate</string>
 				</dict>
 				<dict>
 					<key>XCSourceEditorCommandClassName</key>
@@ -50,7 +50,7 @@
 					<key>XCSourceEditorCommandIdentifier</key>
 					<string>$(PRODUCT_BUNDLE_IDENTIFIER).AddClassExtension</string>
 					<key>XCSourceEditorCommandName</key>
-					<string>Add Class Extension</string>
+					<string>Add Type Extension</string>
 				</dict>
 			</array>
 			<key>XCSourceEditorExtensionPrincipalClass</key>

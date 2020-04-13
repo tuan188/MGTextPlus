@@ -52,7 +52,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             guard let lines = invocation.buffer.lines as? [String] else { return nil }
             
             for line in lines {
-                let groups = line.capturedGroups(withRegex: "class ([^:<{ ]+)")
+                let groups = line.capturedGroups(withRegex: "(?:class|struct) ([^:<{ ]+)")
                 
                 if let className = groups.first, !className.isEmpty {
                     return className
