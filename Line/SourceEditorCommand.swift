@@ -228,24 +228,34 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             
             let leadingSpaces: String
             
-            if let firstLineText = firstLineText {
-                textArray[0] = firstLineText.trimEnd()
-                leadingSpaces = firstLineText.leadingSpaces()
+            if let firstLineText = firstLineText?.trimEnd() {
+                textArray[0] = firstLineText
+                
+                if let index = firstLineText.lastIndex(of: "(") {
+                    let distance = firstLineText.distance(to: index)
+                    leadingSpaces = String.spaces(count: distance + 1)
+                } else if let index = firstLineText.lastIndex(of: "[") {
+                    let distance = firstLineText.distance(to: index)
+                    leadingSpaces = String.spaces(count: distance + 1)
+                } else {
+                    leadingSpaces = String.spaces(count: invocation.buffer.indentationWidth)
+                        + firstLineText.leadingSpaces()
+                }
             } else {
                 leadingSpaces = ""
             }
             
-            var remainLines = [String]()
+            var remainingLines = [String]()
             
             for i in 1..<textArray.count {
                 let text = textArray[i].trim()
                 
                 if !text.isEmpty {
-                    remainLines.append(leadingSpaces + text)
+                    remainingLines.append(leadingSpaces + text)
                 }
             }
             
-            let result = [textArray[0], remainLines.joined(separator: ",\n")].joined(separator: "\n")
+            let result = [textArray[0], remainingLines.joined(separator: ",\n")].joined(separator: "\n")
             deleteLines(indexSet: indexSet)
             
             let insertTargetRange = Range(
