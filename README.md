@@ -1,3 +1,5 @@
+<img width="128" alt="MGTextPlus App Icon" src="images/app_icon.png">
+
 # MGTextPlus
 Xcode Source Editor Extension
 
@@ -8,20 +10,23 @@ Xcode Source Editor Extension
 ## Editor+:
 
 - Remove Comment
+- Add Type Delegate
+- Add Type Extension
 
 ### Remove Comment:
 
-<img width="520" alt="Remove Empty Lines" src="GIF/remove%20comment.gif">
+<img width="400" alt="Remove Comment" src="GIF/remove_comment.gif">
 
-### Add Class Delegate
+### Add Type Delegate
 
-<img width="520" alt="Add Class Delegate" src="GIF/add%20class%20delegate.gif">
+<img width="400" alt="Add Type Delegate" src="GIF/add_type_delegate.gif">
 
-### Add Class Extension
+### Add Type Extension
 
-<img width="520" alt="Add Class Extension" src="GIF/add%20class%20extension.gif">
+<img width="400" alt="Add Type Extension" src="GIF/add_type_extension.gif">
 
 ## Line:
+
 - Move Line Up
 - Move Line Down
 - Copy Line
@@ -32,40 +37,46 @@ Xcode Source Editor Extension
 - Join Lines
 - Split Line by Comma
 - Remove Empty Lines
-
-<img width="253" alt="MGTextPlus - Line" src="images/menu.png">
+- Insert Line Above
+- Insert Line Below
 
 ### Move Line Up:
 
-<img width="520" alt="Duplicate Line" src="GIF/move%20line%20up.gif">
+<img width="400" alt="Move Line Up" src="GIF/move_line_up.gif">
 
 ### Move Line Down:
 
-<img width="520" alt="Duplicate Line" src="GIF/move%20line%20down.gif">
+<img width="400" alt="Move Line Down" src="GIF/move_line_down.gif">
 
 ### Duplicate Line Up:
 
-<img width="520" alt="Duplicate Line" src="GIF/duplicate%20line%20up.gif">
+<img width="400" alt="Duplicate Line Up" src="GIF/duplicate_line_up.gif">
 
 ### Duplicate Line Down:
 
-<img width="520" alt="Duplicate Line" src="GIF/duplicate%20line%20down.gif">
+<img width="400" alt="Duplicate Line Down" src="GIF/duplicate_line_down.gif">
 
 ### Delete Line:
 
-<img width="520" alt="Delete Line" src="GIF/delete%20line.gif">
+<img width="400" alt="Delete Line" src="GIF/delete_line.gif">
 
 ### Join Lines:
 
-<img width="520" alt="Join Lines" src="GIF/join%20lines.gif">
+<img width="500" alt="Join Lines" src="GIF/join_lines.gif">
 
 ### Split Line by Comma:
 
-<img width="520" alt="Join Lines" src="GIF/split%20line%20by%20comma.gif">
+<img width="600" alt="Split Line by Comma" src="GIF/split_line_by_comma.gif">
 
 ### Remove Empty Lines:
 
-<img width="520" alt="Remove Empty Lines" src="GIF/remove%20empty%20lines.gif">
+<img width="400" alt="Remove Empty Lines" src="GIF/remove_empty_lines.gif">
 
+### Insert Line Above:
 
+<img width="500" alt="Insert Line Above" src="GIF/insert_line_above.gif">
+
+### Insert Line Below:
+
+<img width="500" alt="Insert Line Below" src="GIF/insert_line_below.gif">
 
