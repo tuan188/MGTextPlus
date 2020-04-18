@@ -1,6 +1,6 @@
 <img width="128" alt="MGTextPlus App Icon" src="images/app_icon.png">
 
-# MGTextPlus
+# TextPlus
 Xcode Source Editor Extension
 
 <a href="https://itunes.apple.com/us/app/textplus/id1234445803" rel="some text">
