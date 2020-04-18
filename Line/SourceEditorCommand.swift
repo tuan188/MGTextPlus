@@ -106,17 +106,34 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             invocation.buffer.selections.setArray([lineSelection])
         }
         
-        func firstClassName() -> String? {
-            guard let lines = invocation.buffer.lines as? [String] else { return nil }
+        func insertLine(direction: CommandDirection) {
+            let firstRow = textRange.start.line
+            guard var firstLine = invocation.buffer.lines[firstRow] as? String else { return }
+            firstLine = firstLine.trimEnd()
             
-            for line in lines {
-                let groups = line.capturedGroups(withRegex: "class ([^:<{ ]+)")
+            var insertedLine = firstLine.leadingSpaces()
+            let insertedRow: Int
+            
+            switch direction {
+            case .up:
+                insertedRow = max(firstRow, 0)
+            case .down:
+                insertedRow = firstRow + 1
                 
-                if let className = groups.first, !className.isEmpty {
-                    return className
+                if firstLine.hasSuffix("{")
+                    || firstLine.hasSuffix("(")
+                    || firstLine.hasSuffix(":") {
+                    insertedLine = String.spaces(count: invocation.buffer.indentationWidth) + insertedLine
                 }
             }
-            return nil
+            
+            invocation.buffer.lines.insert(insertedLine, at: insertedRow)
+            
+            let lineSelection = XCSourceTextRange(
+                start: XCSourceTextPosition(line: insertedRow, column: insertedLine.count),
+                end: XCSourceTextPosition(line: insertedRow, column: insertedLine.count)
+            )
+            invocation.buffer.selections.setArray([lineSelection])
         }
         
         // Switch all different commands id based which defined in Info.plist
@@ -251,6 +268,10 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             
             let indexSetToRemove = IndexSet(emptyLineIndexArray)
             deleteLines(indexSet: indexSetToRemove)
+        case bundleIdentifier + ".InsertLineAfter":
+            insertLine(direction: .down)
+        case bundleIdentifier + ".InsertLineBefore":
+            insertLine(direction: .up)
         default:
             break
         }

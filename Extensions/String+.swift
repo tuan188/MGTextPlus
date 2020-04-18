@@ -41,6 +41,8 @@ extension String {
         for c in self {
             if c == " " {
                 numberOfSpaces += 1
+            } else {
+                break
             }
         }
         
