@@ -44,10 +44,21 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             invocation.buffer.selections.setArray([lineSelection])
         }
         
+        func clearLines(indexSet: IndexSet) {
+            for i in indexSet {
+                invocation.buffer.lines[i] = ""
+            }
+        
+            let lineSelection = XCSourceTextRange()
+            lineSelection.start = XCSourceTextPosition(line: targetRange.lowerBound, column: 0)
+            lineSelection.end = XCSourceTextPosition(line: targetRange.lowerBound, column: 0)
+            invocation.buffer.selections.setArray([lineSelection])
+        }
+
         func copyLines(_ lines: [String]) {
             let pasteboard = NSPasteboard.general
             pasteboard.declareTypes([NSPasteboard.PasteboardType.string], owner: nil)
-            pasteboard.setString(lines.joined(), forType: NSPasteboard.PasteboardType.string)
+            pasteboard.setString(lines.joined().trimEnd(), forType: NSPasteboard.PasteboardType.string)
         }
         
         func duplicateLine(direction: CommandDirection) {
@@ -107,6 +118,8 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         }
         
         func insertLine(direction: CommandDirection) {
+            if direction == .down && !notReachingBottom() { return }
+            
             let firstRow = textRange.start.line
             guard var firstLine = invocation.buffer.lines[firstRow] as? String else { return }
             firstLine = firstLine.trimEnd()
@@ -282,6 +295,19 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             insertLine(direction: .down)
         case bundleIdentifier + ".InsertLineBefore":
             insertLine(direction: .up)
+        case bundleIdentifier + ".ClearLine":
+            clearLines(indexSet: indexSet)
+        case bundleIdentifier + ".ClearLineAndPaste":
+            clearLines(indexSet: indexSet)
+            let pasteboard = NSPasteboard.general
+            
+            if let pasteboardString = pasteboard.string(forType: .string) {
+                if notReachingBottom() {
+                    invocation.buffer.lines.removeObject(at: textRange.start.line)
+                }
+                
+                invocation.buffer.lines.insert(pasteboardString.trimEnd(), at: textRange.start.line)
+            }
         default:
             break
         }
