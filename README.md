@@ -32,6 +32,8 @@ Xcode Source Editor Extension
 - Copy Line
 - Cut Line
 - Delete Line
+- Clear Line
+- Clear Line and Paste
 - Duplicate Line Up
 - Duplicate Line Down
 - Join Lines
