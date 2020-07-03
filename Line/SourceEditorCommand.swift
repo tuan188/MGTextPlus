@@ -58,7 +58,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         func copyLines(_ lines: [String]) {
             let pasteboard = NSPasteboard.general
             pasteboard.declareTypes([NSPasteboard.PasteboardType.string], owner: nil)
-            pasteboard.setString(lines.joined().trimEnd(), forType: NSPasteboard.PasteboardType.string)
+            pasteboard.setString(lines.joined(), forType: NSPasteboard.PasteboardType.string)
         }
         
         func duplicateLine(direction: CommandDirection) {
