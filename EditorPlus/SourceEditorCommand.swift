@@ -127,7 +127,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 deleteLines(indexSet: indexSet)
                 
                 let spaces = String.spaces(count: invocation.buffer.indentationWidth)
-                let delegate = "protocol \(typeName)Delegate: class {\n\(spaces)\n}"
+                let delegate = "protocol \(typeName)Delegate: AnyObject {\n\(spaces)\n}"
                 let insertTargetRange = Range(
                     uncheckedBounds: (lower: textRange.start.line, upper: textRange.start.line + 1)
                 )
