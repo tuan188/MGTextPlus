@@ -171,12 +171,24 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         case bundleIdentifier + ".JoinLines":
             if indexSet.count == 1 {
                 guard let currentRow = indexSet.last,
-                    currentRow < invocation.buffer.lines.count - 1,
-                    let firstLine = invocation.buffer.lines[currentRow] as? String,
-                    let secondLine = invocation.buffer.lines[currentRow + 1] as? String
-                    else { break }
+                      currentRow < invocation.buffer.lines.count - 1,
+                      let firstLine = (invocation.buffer.lines[currentRow] as? String)?.trimEnd(),
+                      let secondLine = (invocation.buffer.lines[currentRow + 1] as? String)?.trimStart()
+                else { break }
                 
-                let newLine = firstLine.trimEnd() + " " + secondLine.trimStart()
+                let newLine: String
+                
+                if firstLine.hasSuffix("(")
+                    || firstLine.hasSuffix("[")
+                    || secondLine.hasPrefix(".")
+                    || secondLine.hasPrefix(")")
+                    || secondLine.hasPrefix("]")
+                {
+                    newLine = firstLine + secondLine
+                } else {
+                    newLine = firstLine + " " + secondLine
+                }
+                
                 invocation.buffer.lines[currentRow] = newLine
                 invocation.buffer.lines.removeObject(at: currentRow + 1)
                 
@@ -202,7 +214,32 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                         }
                     } ?? []
                 
-                let newLine = selectedLines.joined(separator: " ")
+                var newLine = ""
+                
+                if selectedLines.count > 1 {
+                    var previousLine = selectedLines[0]
+                    newLine = previousLine
+                    
+                    for i in 1..<selectedLines.count {
+                        let currentLine = selectedLines[i]
+                        
+                        if previousLine.hasSuffix("(")
+                            || previousLine.hasSuffix("[")
+                            || currentLine.hasPrefix(".")
+                            || currentLine.hasPrefix(")")
+                            || currentLine.hasPrefix("]")
+                        {
+                            newLine += currentLine
+                        } else {
+                            newLine += " " + currentLine
+                        }
+                        
+                        previousLine = currentLine
+                    }
+                } else {
+                    newLine = selectedLines.joined(separator: " ")
+                }
+                
                 invocation.buffer.lines[currentRow] = newLine
                 
                 let indexSetToRemove = IndexSet(
