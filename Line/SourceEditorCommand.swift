@@ -222,32 +222,29 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 invocation.buffer.selections.setArray([lineSelection])
             }
         case bundleIdentifier + ".SplitLineByComma":
-            guard let selectedLines = selectedLines as? [String] else { return }
+            guard let selectedLine = (selectedLines as? [String])?.first else { return }
+ 
+            let placeHolderPattern = "<#T##.+?#>"
             
-            var textArray = selectedLines.flatMap {
-                $0.components(separatedBy: ",")
-            }
+            var textArray = selectedLine.split(separator: ",", ignoredPattern: placeHolderPattern)
             
-            let firstLine = selectedLines[0]
-            let firstLineText: String?
+            let firstLine: String?
             
-            if let range: Range<String.Index> = firstLine.range(of: ",") {
-                firstLineText = String(firstLine[..<range.lowerBound]) + ","
-            } else if let range: Range<String.Index> = firstLine.range(of: "\n") {
-                firstLineText = String(firstLine[..<range.lowerBound])
+            if textArray.count > 1 {
+                firstLine = textArray[0].trimEnd() + ","
             } else {
-                firstLineText = nil
+                firstLine = nil
             }
             
             let leadingSpaces: String
             
-            if let firstLineText = firstLineText?.trimEnd() {
+            if let firstLineText = firstLine?.trimEnd() {
                 textArray[0] = firstLineText
                 
-                if let index = firstLineText.lastIndex(of: "(") {
+                if let index = firstLineText.firstIndex(of: "(") {
                     let distance = firstLineText.distance(to: index)
                     leadingSpaces = String.spaces(count: distance + 1)
-                } else if let index = firstLineText.lastIndex(of: "[") {
+                } else if let index = firstLineText.firstIndex(of: "[") {
                     let distance = firstLineText.distance(to: index)
                     leadingSpaces = String.spaces(count: distance + 1)
                 } else {
@@ -262,10 +259,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             
             for i in 1..<textArray.count {
                 let text = textArray[i].trim()
-                
-                if !text.isEmpty {
-                    remainingLines.append(leadingSpaces + text)
-                }
+                remainingLines.append(leadingSpaces + text)
             }
             
             let result = [textArray[0], remainingLines.joined(separator: ",\n")].joined(separator: "\n")

@@ -84,3 +84,72 @@ extension Collection {
 extension String.Index {
     func distance<S: StringProtocol>(in string: S) -> Int { string.distance(to: self) }
 }
+
+extension String {
+    func indices(of occurrence: String) -> [Int] {
+        var indices = [Int]()
+        var position = startIndex
+        while let range = range(of: occurrence, range: position..<endIndex) {
+            let i = distance(from: startIndex,
+                             to: range.lowerBound)
+            indices.append(i)
+            let offset = occurrence.distance(from: occurrence.startIndex,
+                                             to: occurrence.endIndex) - 1
+            guard let after = index(range.lowerBound,
+                                    offsetBy: offset,
+                                    limitedBy: endIndex) else {
+                break
+            }
+            position = index(after: after)
+        }
+        
+        return indices
+    }
+    
+    func split(separator: Character, ignoredRanges: [NSRange]) -> [String] {
+        guard !ignoredRanges.isEmpty else {
+            return self.split(separator: separator).map { String($0) }
+        }
+        
+        let indices = self.indices(of: String(separator))
+            .filter { index in
+                ignoredRanges.allSatisfy { range in !range.contains(index) }
+            }
+        
+        var lines: [String] = []
+        var start = self.startIndex
+        let endIndex = self.endIndex
+        
+        for separatorIndex in indices {
+            if separatorIndex > 0,
+               let end = index(startIndex, offsetBy: separatorIndex - 1, limitedBy: endIndex),
+               start <= end {
+                lines.append(String(self[start...end]))
+            } else {
+                lines.append("")
+            }
+            
+            guard let next = index(startIndex, offsetBy: separatorIndex + 1, limitedBy: endIndex) else {
+                break
+            }
+            
+            start = next
+        }
+        
+        lines.append(String(self[start..<endIndex]))
+        
+        return lines
+    }
+    
+    func split(separator: Character, ignoredPattern pattern: String) -> [String] {
+        guard let regex = try? NSRegularExpression(pattern: pattern) else {
+            return self.split(separator: separator).map { String($0) }
+        }
+        
+        let ignoredRanges = regex
+            .matches(in: self, range: NSRange(location: 0, length: self.count))
+            .map { $0.range }
+        
+        return split(separator: separator, ignoredRanges: ignoredRanges)
+    }
+}
