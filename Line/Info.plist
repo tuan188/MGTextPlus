@@ -42,7 +42,7 @@
 					<key>XCSourceEditorCommandIdentifier</key>
 					<string>$(PRODUCT_BUNDLE_IDENTIFIER).PrevBlankLine</string>
 					<key>XCSourceEditorCommandName</key>
-					<string>Pevious Blank Line</string>
+					<string>Previous Blank Line</string>
 				</dict>
 				<dict>
 					<key>XCSourceEditorCommandClassName</key>

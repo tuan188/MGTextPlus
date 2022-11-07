@@ -15,14 +15,14 @@
 		BC14B4321DD024270045B3F3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC81FFB41DC0AEFE00A07CD6 /* Cocoa.framework */; };
 		BC14B4371DD024270045B3F3 /* SourceEditorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC14B4361DD024270045B3F3 /* SourceEditorExtension.swift */; };
 		BC14B4391DD024270045B3F3 /* SourceEditorCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC14B4381DD024270045B3F3 /* SourceEditorCommand.swift */; };
-		BC14B43D1DD024270045B3F3 /* EditorPlus.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BC14B4311DD024270045B3F3 /* EditorPlus.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BC14B43D1DD024270045B3F3 /* EditorPlus.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = BC14B4311DD024270045B3F3 /* EditorPlus.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BC81FFA21DC0AE2400A07CD6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC81FFA11DC0AE2400A07CD6 /* AppDelegate.swift */; };
 		BC81FFA41DC0AE2400A07CD6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC81FFA31DC0AE2400A07CD6 /* Assets.xcassets */; };
 		BC81FFA71DC0AE2400A07CD6 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC81FFA51DC0AE2400A07CD6 /* MainMenu.xib */; };
 		BCA2705D1DCD83D700F87634 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC81FFB41DC0AEFE00A07CD6 /* Cocoa.framework */; };
 		BCA270621DCD83D700F87634 /* SourceEditorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA270611DCD83D700F87634 /* SourceEditorExtension.swift */; };
 		BCA270641DCD83D700F87634 /* SourceEditorCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA270631DCD83D700F87634 /* SourceEditorCommand.swift */; };
-		BCA270681DCD83D700F87634 /* Line.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BCA2705C1DCD83D700F87634 /* Line.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BCA270681DCD83D700F87634 /* Line.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = BCA2705C1DCD83D700F87634 /* Line.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BCB6175C1EB6F2AA0011DA38 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB6175B1EB6F2AA0011DA38 /* String+.swift */; };
 		BCB6175D1EB6F2AA0011DA38 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB6175B1EB6F2AA0011DA38 /* String+.swift */; };
 		BCB6175E1EB6F2AA0011DA38 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB6175B1EB6F2AA0011DA38 /* String+.swift */; };
@@ -69,16 +69,16 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BC81FFC41DC0AEFE00A07CD6 /* Embed App Extensions */ = {
+		BC81FFC41DC0AEFE00A07CD6 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				BCA270681DCD83D700F87634 /* Line.appex in Embed App Extensions */,
-				BC14B43D1DD024270045B3F3 /* EditorPlus.appex in Embed App Extensions */,
+				BCA270681DCD83D700F87634 /* Line.appex in Embed Foundation Extensions */,
+				BC14B43D1DD024270045B3F3 /* EditorPlus.appex in Embed Foundation Extensions */,
 			);
-			name = "Embed App Extensions";
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -256,7 +256,7 @@
 				BC81FF9A1DC0AE2300A07CD6 /* Sources */,
 				BC81FF9B1DC0AE2300A07CD6 /* Frameworks */,
 				BC81FF9C1DC0AE2300A07CD6 /* Resources */,
-				BC81FFC41DC0AEFE00A07CD6 /* Embed App Extensions */,
+				BC81FFC41DC0AEFE00A07CD6 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -294,7 +294,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 1320;
+				LastUpgradeCheck = 1410;
 				ORGANIZATIONNAME = "Tuan Truong";
 				TargetAttributes = {
 					BC14B4301DD024270045B3F3 = {
@@ -429,13 +429,14 @@
 				CODE_SIGN_ENTITLEMENTS = EditorPlus/EditorPlus.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = NN74NJ78BB;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = EditorPlus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 1.5.4;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 1.6.0;
 				PRODUCT_BUNDLE_IDENTIFIER = truong.tuan.TextPlus.EditorPlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -449,13 +450,14 @@
 				CODE_SIGN_ENTITLEMENTS = EditorPlus/EditorPlus.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = NN74NJ78BB;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = EditorPlus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 1.5.4;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 1.6.0;
 				PRODUCT_BUNDLE_IDENTIFIER = truong.tuan.TextPlus.EditorPlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -497,6 +499,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -514,7 +517,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -557,6 +560,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -568,7 +572,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -584,12 +588,14 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = NN74NJ78BB;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = MGTextPlus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MARKETING_VERSION = 1.5.4;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 1.6.0;
 				PRODUCT_BUNDLE_IDENTIFIER = truong.tuan.TextPlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -606,12 +612,14 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = NN74NJ78BB;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = MGTextPlus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MARKETING_VERSION = 1.5.4;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 1.6.0;
 				PRODUCT_BUNDLE_IDENTIFIER = truong.tuan.TextPlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -625,13 +633,14 @@
 				CODE_SIGN_ENTITLEMENTS = Line/Line.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = NN74NJ78BB;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Line/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 1.5.4;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 1.6.0;
 				PRODUCT_BUNDLE_IDENTIFIER = truong.tuan.TextPlus.Line;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -645,13 +654,14 @@
 				CODE_SIGN_ENTITLEMENTS = Line/Line.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = NN74NJ78BB;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Line/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 1.5.4;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 1.6.0;
 				PRODUCT_BUNDLE_IDENTIFIER = truong.tuan.TextPlus.Line;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16097" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097"/>
-        <plugIn identifier="com.apple.WebKit2IBPlugin" version="16097"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
+        <plugIn identifier="com.apple.WebKit2IBPlugin" version="21507"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -67,7 +67,7 @@
         <window title="TextPlus: Xcode Source Editor Extension" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <rect key="contentRect" x="335" y="390" width="600" height="500"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1536" height="937"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1728" height="1079"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -89,7 +89,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FWO-e3-M9N">
-                        <rect key="frame" x="107" y="432" width="53" height="16"/>
+                        <rect key="frame" x="107" y="435" width="53" height="16"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Version:" id="KiZ-Y6-fME">
                             <font key="font" metaFont="systemLight" size="13"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -97,7 +97,7 @@
                         </textFieldCell>
                     </textField>
                     <button verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8ja-up-9dI">
-                        <rect key="frame" x="505" y="5" width="81" height="32"/>
+                        <rect key="frame" x="504" y="5" width="83" height="32"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="ONW-dq-Osw"/>
                             <constraint firstAttribute="width" constant="69" id="ebI-kr-TH1"/>
@@ -111,7 +111,7 @@
                         </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Vva-iT-kjx">
-                        <rect key="frame" x="166" y="432" width="21" height="16"/>
+                        <rect key="frame" x="166" y="435" width="21" height="16"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="1.0" id="MJK-wz-HBn">
                             <font key="font" metaFont="systemLight" size="13"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -126,7 +126,7 @@
                         </wkWebViewConfiguration>
                     </wkWebView>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WjS-fd-fke">
-                        <rect key="frame" x="14" y="5" width="81" height="32"/>
+                        <rect key="frame" x="13" y="5" width="83" height="33"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="69" id="1rB-X8-uEs"/>
                             <constraint firstAttribute="height" constant="21" id="jyM-cl-Gc7"/>
@@ -156,7 +156,7 @@
                     <constraint firstAttribute="trailing" secondItem="8ja-up-9dI" secondAttribute="trailing" constant="20" id="my1-QY-FWC"/>
                     <constraint firstItem="ISK-zN-l4k" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="8" id="rQX-c5-6S4"/>
                     <constraint firstAttribute="trailing" secondItem="R7o-2c-FwQ" secondAttribute="trailing" id="vgQ-xW-RrJ"/>
-                    <constraint firstItem="FWO-e3-M9N" firstAttribute="top" secondItem="Z30-m2-TFZ" secondAttribute="bottom" constant="6" id="vzh-Mz-vxG"/>
+                    <constraint firstItem="FWO-e3-M9N" firstAttribute="top" secondItem="Z30-m2-TFZ" secondAttribute="bottom" constant="3" id="vzh-Mz-vxG"/>
                     <constraint firstAttribute="bottom" secondItem="R7o-2c-FwQ" secondAttribute="bottom" constant="43" id="xJt-Tb-ieP"/>
                 </constraints>
             </view>

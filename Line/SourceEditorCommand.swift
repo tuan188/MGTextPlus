@@ -156,12 +156,11 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
 
             let lastIndex = invocation.buffer.lines.count - 1
 
-            if (direction == .down) {
+            if direction == .down {
                 from = min(textRange.start.line + 1, lastIndex)
                 to = lastIndex
                 by = 1
-            }
-            else {
+            } else {
                 from = max(textRange.start.line - 1, 0)
                 to = 0
                 by = -1
@@ -174,8 +173,9 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                     let cursor = XCSourceTextRange(
                         start: XCSourceTextPosition(line: lineIndex, column: 0),
                         end: XCSourceTextPosition(line: lineIndex, column: 0)
-                    );
-                    invocation.buffer.selections.removeAllObjects();
+                    )
+                    
+                    invocation.buffer.selections.removeAllObjects()
                     invocation.buffer.selections.add(cursor)
                     break
                 }
