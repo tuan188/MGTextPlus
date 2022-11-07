@@ -148,6 +148,39 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             )
             invocation.buffer.selections.setArray([lineSelection])
         }
+
+        func jumpToBlankLine(direction: CommandDirection) {
+            let from: Int
+            let to: Int
+            let by: Int
+
+            let lastIndex = invocation.buffer.lines.count - 1
+
+            if (direction == .down) {
+                from = min(textRange.start.line + 1, lastIndex)
+                to = lastIndex
+                by = 1
+            }
+            else {
+                from = max(textRange.start.line - 1, 0)
+                to = 0
+                by = -1
+            }
+
+            for lineIndex in stride(from: from, to: to, by: by) {
+                guard let line = invocation.buffer.lines[lineIndex] as? String else { continue }
+
+                if line.trim().isEmpty {
+                    let cursor = XCSourceTextRange(
+                        start: XCSourceTextPosition(line: lineIndex, column: 0),
+                        end: XCSourceTextPosition(line: lineIndex, column: 0)
+                    );
+                    invocation.buffer.selections.removeAllObjects();
+                    invocation.buffer.selections.add(cursor)
+                    break
+                }
+            }
+        }
         
         // Switch all different commands id based which defined in Info.plist
         switch invocation.commandIdentifier {
@@ -339,6 +372,10 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 
                 invocation.buffer.lines.insert(pasteboardString.trimEnd(), at: textRange.start.line)
             }
+        case bundleIdentifier + ".NextBlankLine":
+            jumpToBlankLine(direction: .down)
+        case bundleIdentifier + ".PrevBlankLine":
+            jumpToBlankLine(direction: .up)
         default:
             break
         }
