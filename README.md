@@ -81,4 +81,4 @@ Xcode Source Editor Extension
 ### Insert Line Below:
 
 <img width="500" alt="Insert Line Below" src="GIF/insert_line_below.gif">
-
+[![GitHub Sigstore Prober](https://github.com/actions/attest-build-provenance/actions/workflows/prober-github.yml/badge.svg)](https://github.com/actions/attest-build-provenance/actions/workflows/prober-github.yml)
