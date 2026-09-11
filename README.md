@@ -1,9 +1,18 @@
+> [!IMPORTANT]
+> **This repository is archived and no longer maintained.**
+>
+> TextPlus has been renamed **LineSmith for Xcode** and continues on the Mac App Store as version 2.0 — the same app, rewritten with new editor commands and modern macOS support. Development moved to a private repository, so this source tree is frozen at v1.6.0 and is kept for reference only.
+>
+> **[LineSmith for Xcode on the Mac App Store →](https://apps.apple.com/us/app/linesmith-for-xcode/id1234445803)**
+>
+> Issues and pull requests here will not be answered. For bug reports or feature requests, please use the support link on the App Store page.
+
 <img width="128" alt="MGTextPlus App Icon" src="images/app_icon.png">
 
 # TextPlus
 Xcode Source Editor Extension
 
-<a href="https://itunes.apple.com/us/app/textplus/id1234445803" rel="download">
+<a href="https://apps.apple.com/us/app/linesmith-for-xcode/id1234445803" rel="download">
   <img width="196" alt="Download on the Mac AppStore" src="images/button-macappstore.png">
 </a>
 
